@@ -1,0 +1,67 @@
+{"items": [
+  {
+    "Week": "Week 1",
+    "Colin": {"hour": 2, "work": ""},
+    "Mackenzie": {"hour": 2, "work": ""},
+    "Nathan": {"hour": 2, "work": ""},
+    "Sadaf": {"hour": 2, "work": ""},
+    "William": {"hour": 2, "work": ""}
+  },
+  {
+    "Week": "Week 2",
+    "Colin": {"hour": 4, "work": "Meeting w/ sponsors, discussed plans moving forward, got learning materials to team, reached out to sponsers for slack and email"},
+    "Mackenzie": {"hour": 4, "work": "Researching topic, meeting sponsors, notetaking and timesheet tracking, document creation"},
+    "Nathan": {"hour": 4, "work": "set up trello, created team site, meet with sponsers and had dinner to get to know them."},
+    "Sadaf": {"hour": 4, "work": "Meeting w/ sponsors, discussed plans moving forward, got learning materials to team"},
+    "William": {"hour": 4, "work": "request VM from Kurt and Meet with sponsors"}
+  },
+  {
+    "Week": "Week 3",
+    "Colin": {"hour": 5, "work": "Researched blockchain tech and Quorum. Started looking at ways to implement our own Quorum instance on a VM. Worked on project synopsis"},
+    "Mackenzie": {"hour": 5, "work": "Learning more about the technology, starting work on the next deliverables, and preparing to meet with sponsor with initial plan and questions"},
+    "Nathan": {"hour": 4, "work": "Played around with MetaMask to get use to how blockchains work. Deployed Website to Team's SE Account."},
+    "Sadaf": {"hour": 5, "work": "Researched blockchain tech and read white papers for Blockchain and Ethereum. Also learned Solidity to understand the code/structure of bitcoins"},
+    "William": {"hour": 5, "work": ""}
+  },
+  {
+    "Week": "Week 4",
+    "Colin": {"hour": 6, "work": "Met with sponsors, worked on the domain model, worked on the project plan"},
+    "Mackenzie": {"hour": 5, "work": "Recorded responses from sponsor, worked on Domain Model and Project Plan, suggested we use Spiral as a methodology"},
+    "Nathan": {"hour": 5, "work": "Met with sponsors, worked on project plan, figured out possible objectives we will want to plan for each spiral cycle"},
+    "Sadaf": {"hour": 6, "work": "Met with sponors to work on project plan and iron out any questions we had"},
+    "William": {"hour": 4, "work": "Met with sponsors, worked on the domain model, look up ERC 721"}
+  },
+  {
+    "Week": "Week 5",
+    "Colin": {"hour": 6, "work": "Made alpha version of the ERC20 token. Met with the team, set up meeting time for Saturday with team. Discussed issues holding us back, and went over feedback from sponsors."},
+    "Mackenzie": {"hour": 4, "work": "Met with sponsor, read over new contract and Solidity language"},
+    "Nathan": {"hour": 4, "work": "Meet with sponsors, reviewed ERC-20 Token. Created Spiral Cycle 1 objectice, risk, and development documents"},
+    "Sadaf": {"hour": 5, "work": "Met with sponsor, started implementation for ERC721"},
+    "William": {"hour": 0, "work": ""}
+  },
+  {
+    "Week": "Week 6",
+    "Colin": {"hour": 4 , "work": "Lot's of work internally with setting up the VM, did some validation of the ERC20 token. Read over some materials for ERC721, was busy with career fair this week."},
+    "Mackenzie": {"hour": 3, "work": "Installing Git on the VM, enhancing the ERC20 token to remove errors and update version"},
+    "Nathan": {"hour": 3, "work": "Created initial ERC-721 token. It currently has one compiling error that I haven't been able to crack. Career fair."},
+    "Sadaf": {"hour": 3, "work": "Read over material for ERC721 and got the credentials for the VM for the team"},
+    "William": {"hour": 2, "work": "Read over the material for ERC 721"}
+  },
+  {
+    "Week": "Week 7",
+    "Colin": {"hour": 4, "work": "Tried setting up VM with vagrant, found issues with virtualbox. Reached out to JP Morgan about getting a remote desktop set up on their internal servers."},
+    "Mackenzie": {"hour": 2, "work": "Installing and setting up the VM with Vagrant and cloning necessary repos, brainstorming next iteration of token functionality"},
+    "Nathan": {"hour": 2, "work": "Installed and setup Qourum on Linux VM. Configured Tessera on VM. Started up 4 Nodes using Qourum Examples"},
+    "Sadaf": {"hour": 2, "work": "Installed Quorum on desktop. Ran into issues with makefiles so that took longer"},
+    "William": {"hour": 0, "work": ""}
+  },
+  {
+    "Week": "Week 8",
+    "Colin": {"hour": 3, "work": "Tried setting up VM again, still failed. Did some work in my spare time with the smart contracts to learn a bit more"},
+    "Mackenzie": {"hour": 2, "work": "Met with sponsor, set up of VM and planning of next version of the smart contracts"},
+    "Nathan": {"hour": 4, "work": "Installed and setup Qourum on Linux VM. Configured Tessera on VM. Started up 4 Nodes using Qourum Examples"},
+    "Sadaf": {"hour": 0, "work": ""},
+    "William": {"hour": 4, "work": "Worked with Quorum example and record a video of how to run smart contract on quorum"}
+  }
+]
+}
