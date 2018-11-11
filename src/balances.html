@@ -12,19 +12,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
 <link rel="import" href="shared-styles.html">
 
-<dom-module id="daily-updates">
+<dom-module id="balances">
   <template>
     <style include="shared-styles">
       :host {
         display: block;
-
         padding: 10px;
       }
     </style>
 
     <iron-ajax auto
       url="http://dd8e1df7.ngrok.io/status/erc20Balance?address=0x5"
-	  async = false
+      async = false
       method = "GET"
       handleAs = "json"
       last-response = {{balance}}
@@ -32,18 +31,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <div class="card">
       <h1>Get a User's Balance</h1>
-	  [[balance.data]]
-      
+      [[balance.data]]
     </div>
   </template>
 
   <script>
-    class DailyUpdates extends Polymer.Element {
-      static get is() { return 'daily-updates'; }
-	  
+    class Balances extends Polymer.Element {
+      static get is() { return 'balances'; }
     }
 
-	
-    window.customElements.define(DailyUpdates.is, DailyUpdates);
+
+    window.customElements.define(Balances.is, Balances);
   </script>
 </dom-module>

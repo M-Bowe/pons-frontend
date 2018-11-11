@@ -22,10 +22,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="my-icons.html">
 
-<link rel="lazy-import" href="daily-updates.html">
-<link rel="lazy-import" href="my-ups.html">
-<link rel="lazy-import" href="work-done.html">
-<link rel="lazy-import" href="my-files.html">
+<link rel="lazy-import" href="balances.html">
+<link rel="lazy-import" href="swaps.html">
 <link rel="lazy-import" href="my-view404.html">
 
 <dom-module id="my-app">
@@ -80,10 +78,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <app-drawer id="drawer" slot="drawer" swipe-open="[[narrow]]">
         <app-toolbar>Menu</app-toolbar>
         <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
-          <a name="daily-updates" href="[[rootPath]]?page=daily-updates">Updates</a>
-          <a name="my-ups" href="[[rootPath]]?page=my-ups">4 Ups</a>
-          <a name="work-done" href="[[rootPath]]?page=work-done">Teammate Contributions</a>
-          <a name="my-files" href="[[rootPath]]?page=my-files">Files</a>
+          <a name="daily-updates" href="[[rootPath]]?page=balances">Balances</a>
+          <a name="my-ups" href="[[rootPath]]?page=swaps">Token Swaps</a>
         </iron-selector>
       </app-drawer>
 
@@ -93,7 +89,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <app-header slot="header" condenses reveals effects="waterfall">
           <app-toolbar>
             <paper-icon-button icon="my-icons:menu" drawer-toggle></paper-icon-button>
-            <div main-title>JP Morgan Senior Project</div>
+            <div main-title>Quorum Trading Bridge</div>
           </app-toolbar>
         </app-header>
 
@@ -102,11 +98,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             attr-for-selected="name"
             fallback-selection="view404"
             role="main">
-          <daily-updates name="daily-updates"></daily-updates>
-          <my-ups name="my-ups"></my-ups>
-          <work-done name="work-done"></work-done>
-          <my-files name="my-files"></my-files>
-          <my-view404 name="view404"></my-view404>
+          <balances name="balances"></balances>
+          <swaps name="swaps"></swaps>
         </iron-pages>
       </app-header-layout>
     </app-drawer-layout>
@@ -152,7 +145,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       _routePageChanged(page) {
         // If no page was found in the route data, page will be an empty string.
         // Default to 'view1' in that case.
-        this.page = page || 'daily-updates';
+        this.page = page || 'balances';
 
         // Close a non-persistent drawer when the page & route are changed.
         if (!this.$.drawer.persistent) {

@@ -12,7 +12,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
 <link rel="import" href="shared-styles.html">
 
-<dom-module id="my-ups">
+<dom-module id="swaps">
   <template>
     <style include="shared-styles">
       :host {
@@ -20,63 +20,36 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         padding: 10px;
       }
 
-      table{
-        border-collapse: collapse;
+      .date {
+        display: inline-block;
+        float: right;
       }
-
-      th{
-        min-width: 175px;
-      }
-
-      th, td{
-        border: 1px solid black;
-      }
-
     </style>
 
     <iron-ajax auto
-      url="files/4-ups.json"
+      url="files/files.json"
       method = "GET"
       handleAs = "json"
-      last-response = "{{updates}}"
+      last-response = "{{files}}"
       debounce-duration="300"></iron-ajax>
 
     <div class="card">
-      <h1>4-Ups</h1>
-      <template is="dom-repeat" items="{{updates.items}}">
+      <h1>Files</h1>
+      <template is="dom-repeat" items="{{files.items}}">
         <div class="card">
-          <table>
-            <tr>
-              <th>Week</th>
-              <td>[[item.Week]]</td>
-            </tr>
-            <tr>
-              <th>What We Did</th>
-              <td>[[item.Did]]</td>
-            </tr>
-            <tr>
-              <th>What We Plan to Do</th>
-              <td>[[item.Plan]]</td>
-            </tr>
-            <tr>
-              <th>Risks</th>
-              <td>[[item.Risks]]</td>
-            </tr>
-            <tr>
-              <th>What We Need</th>
-              <td>[[item.Need]]</td>
-            </tr>
-          </table>
+          <a href="files/[[item.file]]" download="[[item.file]]"><b>[[item.title]]</b></a> <div class="date">Last Updated: [[item.timestamp]]</div>
+          <br>
+          <p>[[item.desc]]</p>
         </div>
       </template>
     </div>
   </template>
 
   <script>
-    class MyUps extends Polymer.Element {
-      static get is() { return 'my-ups'; }
+    class Swaps extends Polymer.Element {
+      static get is() { return 'swaps'; }
     }
 
-    window.customElements.define(MyUps.is, MyUps);
+    window.customElements.define(Swaps.is, Swaps);
   </script>
 </dom-module>
