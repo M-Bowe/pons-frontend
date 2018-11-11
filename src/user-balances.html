@@ -12,44 +12,35 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
 <link rel="import" href="shared-styles.html">
 
-<dom-module id="swaps">
+<dom-module id="user-balances">
   <template>
     <style include="shared-styles">
       :host {
         display: block;
         padding: 10px;
       }
-
-      .date {
-        display: inline-block;
-        float: right;
-      }
     </style>
 
     <iron-ajax auto
-      url="files/files.json"
+      url="http://dd8e1df7.ngrok.io/status/erc20Balance?address=0x5"
+      async = false
       method = "GET"
       handleAs = "json"
-      last-response = "{{files}}"
+      last-response = {{balance}}
       debounce-duration="300"></iron-ajax>
 
     <div class="card">
-      <h1>Files</h1>
-      <template is="dom-repeat" items="{{files.items}}">
-        <div class="card">
-          <a href="files/[[item.file]]" download="[[item.file]]"><b>[[item.title]]</b></a> <div class="date">Last Updated: [[item.timestamp]]</div>
-          <br>
-          <p>[[item.desc]]</p>
-        </div>
-      </template>
+      <h1>Get a User's Balance</h1>
+      [[balance.data]]
     </div>
   </template>
 
   <script>
-    class Swaps extends Polymer.Element {
-      static get is() { return 'swaps'; }
+    class UserBalances extends Polymer.Element {
+      static get is() { return 'user-balances'; }
     }
 
-    window.customElements.define(Swaps.is, Swaps);
+
+    window.customElements.define(UserBalances.is, UserBalances);
   </script>
 </dom-module>

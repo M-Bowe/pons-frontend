@@ -22,8 +22,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="my-icons.html">
 
-<link rel="lazy-import" href="balances.html">
-<link rel="lazy-import" href="swaps.html">
+<link rel="lazy-import" href="user-balances.html">
+<link rel="lazy-import" href="token-swaps.html">
 <link rel="lazy-import" href="my-view404.html">
 
 <dom-module id="my-app">
@@ -78,8 +78,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <app-drawer id="drawer" slot="drawer" swipe-open="[[narrow]]">
         <app-toolbar>Menu</app-toolbar>
         <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
-          <a name="daily-updates" href="[[rootPath]]?page=balances">Balances</a>
-          <a name="my-ups" href="[[rootPath]]?page=swaps">Token Swaps</a>
+          <a name="daily-updates" href="[[rootPath]]?page=user-balances">Balances</a>
+          <a name="my-ups" href="[[rootPath]]?page=token-swaps">Token Swaps</a>
         </iron-selector>
       </app-drawer>
 
@@ -98,8 +98,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             attr-for-selected="name"
             fallback-selection="view404"
             role="main">
-          <balances name="balances"></balances>
-          <swaps name="swaps"></swaps>
+          <user-balances name="user-balances"></user-balances>
+          <token-swaps name="token-swaps"></token-swaps>
         </iron-pages>
       </app-header-layout>
     </app-drawer-layout>
