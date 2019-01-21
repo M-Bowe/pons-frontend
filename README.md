@@ -4,6 +4,10 @@
 
 Front-end repository for the Pons Trading Bridge for Quorum.
 
+Functionality:
+Getting balances of Quorum wallets.
+Transferring funds between ERC-20 and ERC-721 blockchains.
+
 
 
 ## Copyright and License
