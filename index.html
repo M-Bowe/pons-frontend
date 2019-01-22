@@ -85,7 +85,7 @@
           <div class="col-xl-6 col-lg-6">
             <div class="featured-text text-center text-lg-left">
               <form class="form-inline d-flex">
-                <input type="text" class="form-control-lg flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="inputBalance" onsubmit="return getBalance();" placeholder="Enter wallet address..." required>
+                <input type="text" class="form-control-lg flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="inputBalance" onsubmit="return getBalance();" placeholder="Enter wallet address..." required maxlength="42">
                 <button type="button" onclick="return getBalance();" class="btn btn-primary mx-auto">Submit</button>
               </form>
               <div id="balance"></div>
@@ -155,7 +155,7 @@
               document.getElementById("balance").insertAdjacentHTML("afterbegin", `<div class="alert alert-warning" role="alert">Error, please try again.</div>`);
             }
           };
-          xhttp.open("GET", "URL", true);
+          xhttp.open("GET", `_.ngrok.io/erc20/balance?address=${address}`, true);
           xhttp.send();
           */
         }
