@@ -20,7 +20,7 @@
 
     <!-- Custom styles for this template -->
     <link href="css/grayscale.min.css" rel="stylesheet">
-
+    <link href="css/custome.css" rel="stylesheet">
   </head>
 
   <body id="page-top">
@@ -109,43 +109,56 @@
             <p class="text-black-50 mb-0">Swap your ERC tokens with another user here.</p>
             <br></br>
           </div>
-
-      <!-- Project One Row -->
-      <div class="row justify-content-center no-gutters mb-5 mb-lg-0">
-        <div class="col-lg-6">
-          <img class="img-fluid" src="img/demo-image-01.jpg" alt="">
         </div>
-        <div class="col-lg-6">
-          <div class="bg-black text-center h-100 project">
-            <div class="d-flex h-100">
-              <div class="project-text w-100 my-auto text-center text-lg-left">
-                <h4 class="text-white">Placeholder 1</h4>
-                <p class="mb-0 text-white-50">Placeholder text</p>
-                <hr class="d-none d-lg-block mb-0 ml-0">
-              </div>
+        <button type="button" id="erc20Form">ERC20 transaction</button>
+        <button type="button" id="erc721Form">ERC721 transaction</button>
+        <div>
+          <form id ="exchangeForm20" method="POST" >
+            <div class="form-group">
+              <label for="receiverAddress">receiver address</label>
+              <input class="form-control" id="receiverAddress" aria-describedby="emailHelp" placeholder="0xaabb">
             </div>
-          </div>
+            <div class="form-group">
+              <label for="senderAddress">sender address</label>
+              <input class="form-control" id="senderAddress" placeholder="0xbbcc">
+            </div>
+            <div class="form-group" type="hidden">
+              <label for="sendToken">send token unit</label>
+              <input class="form-control" id="sendToken" placeholder="0xbbcc">
+            </div>
+            <div class="form-group" type="hidden">
+              <label for="receiveToken">receive token unit</label>
+              <input class="form-control" id="receiveToken" placeholder="0xbbcc">
+            </div>
+            <button type="submit" class="btn btn-primary" id="submit" >Submit</button>
+          </form>
+        </div>
+        <div>
+          <form id ="exchangeForm721" method="POST">
+            <div class="form-group">
+              <label for="receiverAddress721">receiver address</label>
+              <input class="form-control" id="receiverAddress721" aria-describedby="emailHelp" placeholder="0xaabb">
+            </div>
+            <div class="form-group">
+              <label for="senderAddress721">sender address</label>
+              <input class="form-control" id="senderAddress721" placeholder="0xbbcc">
+            </div>
+            <div class="form-group" type="hidden">
+              <label for="sendToken721">send token id</label>
+              <input class="form-control" id="sendToken721" placeholder="0xbbcc">
+            </div>
+            <div class="form-group" type="hidden">
+              <label for="sendTokenUnit721">send token unit</label>
+              <input class="form-control" id="sendTokenUnit721" placeholder="0xbbcc">
+            </div>
+            <div class="form-group" type="hidden">
+              <label for="receiveToken721">receive token unit</label>
+              <input class="form-control" id="receiveToken721" placeholder="0xbbcc">
+            </div>
+            <button type="submit" class="btn btn-primary" id="submit" >Submit</button>
+          </form>
         </div>
       </div>
-
-      <!-- Project Two Row -->
-      <div class="row justify-content-center no-gutters">
-        <div class="col-lg-6">
-          <img class="img-fluid" src="img/demo-image-02.jpg" alt="">
-        </div>
-        <div class="col-lg-6 order-lg-first">
-          <div class="bg-black text-center h-100 project">
-            <div class="d-flex h-100">
-              <div class="project-text w-100 my-auto text-center text-lg-right">
-                <h4 class="text-white">Placeholder 2</h4>
-                <p class="mb-0 text-white-50">Placeholder text</p>
-                <hr class="d-none d-lg-block mb-0 mr-0">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
     </section>
 
     <!-- Footer -->
@@ -188,6 +201,8 @@
 
     <!-- Custom scripts -->
     <script src="js/grayscale.min.js"></script>
+    <!-- back end scripts -->
+    <script src="formProcess.js"></script>
 
   </body>
 
