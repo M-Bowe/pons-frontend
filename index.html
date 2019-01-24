@@ -185,7 +185,7 @@
               console.log(`Error getting balance: ${this.responseText}`);
             }
           };
-          xhttp.open("GET", `https://a82e504f.ngrok.io/status/erc20Balance?address=${address}`, true);
+          xhttp.open("GET", `https://a82e504f.ngrok.io/erc20/balance?address=${address}`, true);
           xhttp.send();
         }
         return false;
