@@ -299,6 +299,10 @@ a:focus, a:hover {
   color: #64a19d !important;
 }
 
+.bg-white {
+  background-color: #ffffff
+}
+
 footer {
   padding: 5rem 0;
 }
