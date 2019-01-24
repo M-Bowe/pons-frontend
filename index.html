@@ -90,7 +90,7 @@
           <div class="col-xl-6 col-lg-6">
             <div class="featured-text text-center text-lg-left">
               <form class="form-inline d-flex">
-                <input type="text" class="form-control-lg flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="inputBalance" onsubmit="return getBalance();" placeholder="Enter wallet address..." required>
+                <input type="text" class="form-control-lg flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="inputBalance" onsubmit="return getBalance();" placeholder="Enter wallet address..." required maxlength="42">
                 <button type="button" onclick="return getBalance();" class="btn btn-primary mx-auto">Submit</button>
               </form>
               <div id="balance"></div>
@@ -174,19 +174,19 @@
         var address = document.getElementById("inputBalance").value;
         if (address !== "") {
           console.log(`Getting balance for ${address}...`);
-          /*Remove comment when URL is determined
+
           var xhttp = new XMLHttpRequest();
           xhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) { */
-              document.getElementById("balance").insertAdjacentHTML("afterbegin", `<div class="alert alert-success" role="alert">Balance of wallet ${address}: </div>`); /*${this.responseText}*/
-            /* }
-            else {
-              document.getElementById("balance").insertAdjacentHTML("afterbegin", `<div class="alert alert-warning" role="alert">Error, please try again.</div>`);
+            if (this.readyState == 4 && this.status == 200) {
+              let balance = this.responseText;
+              document.getElementById("balance").insertAdjacentHTML("afterbegin", `<div class="alert alert-success" role="alert">Balance of wallet ${address}: ${balance}</div>`);
+            }
+            else if (this.status !== 200) {
+              console.log(`Error getting balance: ${this.responseText}`);
             }
           };
-          xhttp.open("GET", "URL", true);
+          xhttp.open("GET", `https://a82e504f.ngrok.io/status/erc20Balance?address=${address}`, true);
           xhttp.send();
-          */
         }
         return false;
       }
