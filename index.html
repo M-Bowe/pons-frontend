@@ -39,7 +39,7 @@
               <a class="nav-link js-scroll-trigger" href="#about">About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#exchanges">Check Balance</a>
+              <a class="nav-link js-scroll-trigger" href="#balances">Check Balance</a>
             </li>
 
             <li class="nav-item">
@@ -77,20 +77,21 @@
       </div>
     </section>
 
-    <!-- Exchanges Section -->
-    <section id="exchanges" class="projects-section bg-light" style="height: 200px;">
+    <!-- Balance Section -->
+    <section id="balances" class="projects-section bg-light" style="height: auto;">
       <div class="container">
-
-        <!-- Balance Row -->
         <div class="row align-items-center no-gutters mb-4 mb-lg-5">
           <div class="col-xl-6 col-lg-6">
             <h4>Balances</h4>
             <p class="text-black-50 mb-0">Check your Quorum balance here.</p>
+            <hr class="d-none d-lg-block mb-0 ml-0">
           </div>
-          <div class="col-xl-6 col-lg-6">
-            <div class="featured-text text-center text-lg-left">
+        </div>
+        <div>
+          <div class="col-xl-8 col-lg-8 mx-auto">
+            <div class="text-center text-lg-left">
               <form class="form-inline d-flex">
-                <input type="text" class="form-control-lg flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="inputBalance" onsubmit="return getBalance();" placeholder="Enter wallet address..." required maxlength="42">
+                <input  id="inputBalance" type="text" class="form-control-lg flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" onsubmit="return getBalance();" pattern="^[a-zA-Z0-9]*$" placeholder="Enter wallet address&#8230;" required maxlength="42">
                 <button type="button" onclick="return getBalance();" class="btn btn-primary mx-auto">Submit</button>
               </form>
               <div id="balance"></div>
@@ -102,32 +103,32 @@
 
     <section id="swap" class="projects-section bg-white" style="top: 500px;">
       <div class="container">
-
         <div class="row align-items-center no-gutters mb-4 mb-lg-5">
-          <div class="col-xl-6 col  -lg-6">
+          <div class="col-xl-6 col-lg-6">
             <h4>Pons Trading Bridge</h4>
-            <p class="text-black-50 mb-0">Swap your ERC tokens with another user here.</p>
+            <p class="text-black-50 mb-0">Swap your ERC tokens with another user here. Select a token you want to exchange.</p>
+            <hr class="d-none d-lg-block mb-0 ml-0">
           </div>
         </div>
-        <button type="button" id="erc20Form">ERC20 transaction</button>
-        <button type="button" id="erc721Form">ERC721 transaction</button>
+        <button type="button" id="erc20Form">ERC20 Transactions</button>
+        <button type="button" id="erc721Form">ERC721 Transactions</button>
         <div>
-          <br></br>
-          <form id ="exchangeForm20" method="POST" >
+          <br>
+          <form id ="exchangeForm20" method="POST">
             <div class="form-group">
-              <label for="receiverAddress">receiver address</label>
+              <label for="receiverAddress">Receiver address</label>
               <input class="form-control" id="receiverAddress" aria-describedby="emailHelp" placeholder="0xaabb">
             </div>
             <div class="form-group">
-              <label for="senderAddress">sender address</label>
+              <label for="senderAddress">Sender address</label>
               <input class="form-control" id="senderAddress" placeholder="0xbbcc">
             </div>
             <div class="form-group" type="hidden">
-              <label for="sendToken">send token unit</label>
+              <label for="sendToken">Amount to send</label>
               <input class="form-control" id="sendToken" placeholder="0xbbcc">
             </div>
             <div class="form-group" type="hidden">
-              <label for="receiveToken">receive token unit</label>
+              <label for="receiveToken">Amount to receive</label>
               <input class="form-control" id="receiveToken" placeholder="0xbbcc">
             </div>
             <button type="submit" class="btn btn-primary" id="submit" >Submit</button>
@@ -136,23 +137,23 @@
         <div>
           <form id ="exchangeForm721" method="POST">
             <div class="form-group">
-              <label for="receiverAddress721">receiver address</label>
+              <label for="receiverAddress721">Receiver address</label>
               <input class="form-control" id="receiverAddress721" aria-describedby="emailHelp" placeholder="0xaabb">
             </div>
             <div class="form-group">
-              <label for="senderAddress721">sender address</label>
+              <label for="senderAddress721">Sender address</label>
               <input class="form-control" id="senderAddress721" placeholder="0xbbcc">
             </div>
             <div class="form-group" type="hidden">
-              <label for="sendToken721">send token id</label>
+              <label for="sendToken721">Sender token ID</label>
               <input class="form-control" id="sendToken721" placeholder="0xbbcc">
             </div>
             <div class="form-group" type="hidden">
-              <label for="sendTokenUnit721">send token unit</label>
+              <label for="sendTokenUnit721">Amount to send</label>
               <input class="form-control" id="sendTokenUnit721" placeholder="0xbbcc">
             </div>
             <div class="form-group" type="hidden">
-              <label for="receiveToken721">receive token unit</label>
+              <label for="receiveToken721">Amount to receive</label>
               <input class="form-control" id="receiveToken721" placeholder="0xbbcc">
             </div>
             <button type="submit" class="btn btn-primary" id="submit" >Submit</button>
@@ -168,7 +169,6 @@
       </div>
     </footer>
 
-
     <script>
       function getBalance() {
         var address = document.getElementById("inputBalance").value;
@@ -176,9 +176,12 @@
           console.log(`Getting balance for ${address}...`);
 
           var xhttp = new XMLHttpRequest();
+          xhttp.responseType = 'json';
           xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-              let balance = this.responseText;
+              let balance = this.response;
+              let value = balance.data;
+              // This needs to be tested when server is running
               document.getElementById("balance").insertAdjacentHTML("afterbegin", `<div class="alert alert-success" role="alert">Balance of wallet ${address}: ${balance}</div>`);
             }
             else if (this.status !== 200) {
