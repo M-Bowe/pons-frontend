@@ -39,6 +39,9 @@
               <a class="nav-link js-scroll-trigger" href="#about">About</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#guide">How It Works</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#balances">Check Balance</a>
             </li>
 
@@ -70,9 +73,81 @@
             <h2 class="text-white mb-4">Built for Quorum</h2>
             <p> </p>
             <p class="text-white-50">Pons is a senior project created by students at RIT.
-              <br>The project, created in partnership with J.P. Morgan, is centered around the exchange of two different tokens on <a href="https://www.jpmorgan.com/global/Quorum">Quorum</a> blockchains.
+              <br>The project, created in partnership with J.P. Morgan, is centered around the exchange of ERC-20 and ERC-721 tokens on <a href="https://www.jpmorgan.com/global/Quorum">Quorum</a> blockchains.
             </p>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Guide Section -->
+    <section id="guide" class="projects-section bg-white" style="height: auto;">
+      <div class="container">
+        <div class="row align-items-center no-gutters mb-4 mb-lg-5">
+          <div class="col-xl-6 col-lg-6">
+            <h4>Getting Started</h4>
+            <p class="text-black-50 mb-0">Understanding how the swap works.</p>
+            <hr class="d-none d-lg-block mb-0 ml-0">
+          </div>
+        </div>
+        <div>
+          <p>The Pons Trading Bridge provides a solution for being able to exchange ERC20 and ERC721 tokens.
+            It utilizes a bridge between two distinct blockchain tokens using the Quorum blockchain environment.
+          </p>
+
+          <p> There will be two tokens on seperate blockchains: an ERC20 "cash" token, and an ERC721 loan token. </p>
+
+          <p> In order for this conversion to take place,
+          a "bridge" between these separate blockchain implementations is developed using these two distinct smart contract protocols.
+          The solution makes use of escrow contracts once both users have entered their information in the forms below.</p>
+
+          <p> Trade assets will be stored in escrow contracts for both parties until the trade is fully completed. If either party cancels the transaction,
+          the trade assets will be rightfully returned to the respective owner.</p>
+
+          <p> Click below to see an example. </p>
+
+          <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+            View Example
+         </a>
+
+         <div class="collapse" id="collapseExample" align="center">
+          <div class="card card-body">
+            <p> Let's start with two of our developers (Collin & Mackenzie) who wish to exchange ERC20 and ERC721 tokens.
+                Mackenzie's ERC721 token in this instance is his house that he wishes to sell.
+                We will be using the other 2 developers (Sadaf & Nathan) to represent the escrow wallets.
+             </p>
+            <img src="slide1.PNG"  class="center" width="700px" height="400px">
+            <br></br>
+
+            <p> Collin, the buyer,will be initializing the swap by filling out the swap forms (Note: This is just a rough mockup for now until or UI is completed).
+            </p>
+            <img src="slide2.PNG"  class="center" width="800px" height="400px">
+            <br></br>
+
+            <p> Mackenzie, the seller, will review the trade made by Collin and
+              will submit his end of the trade to the escrow wallet alongside Collin's once he approves of the trade
+            </p>
+            <img src="slide3.PNG"  class="center" width="900px" height="400px">
+            <br></br>
+
+            <p> The trade assets are now forwarded to their respective escrow contracts until the trade is completed.
+            </p>
+            <img src="slide4.PNG"  class="center" width="500px" height="400px">
+            <br></br>
+
+            <p> Mackenzie and Collin both must approve the trade by releasing their trade assets from the escrow contracts to be traded using our Java implemented bridge.
+            </p>
+            <img src="slide5.PNG"  class="center" width="700px" height="400px">
+            <br></br>
+
+            <p> The bridge will forward the traded assets to their new owners unless the trade is cancelled.
+            </p>
+            <img src="slide6.PNG"  class="center" width="700px" height="400px">
+            <br></br>
+
+          </div>
+        </div>
+
         </div>
       </div>
     </section>
@@ -101,7 +176,8 @@
       </div>
     </section>
 
-    <section id="swap" class="projects-section bg-white">
+
+    <section id="swap" class="projects-section bg-white" style="top: 500px;">
       <div class="container">
         <div class="row align-items-center no-gutters mb-4 mb-lg-5">
           <div class="col-xl-6 col-lg-6">
