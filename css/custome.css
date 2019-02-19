@@ -2,6 +2,14 @@
     display:none;
 
 }
-#exchangeForm721 {
+#sellerREview {
+    display:none;
+}
+
+#sellerTransferFund {
+    display:none;
+}
+
+#buyerTransferFund {
     display:none;
 }
