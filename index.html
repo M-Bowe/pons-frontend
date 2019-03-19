@@ -191,8 +191,8 @@
     </div>
     <button type="button" id="erc20Form" class="btn btn-primary mx-auto">contract Transactions</button>
     <button type="button" id="reviewForm" class="btn btn-primary mx-auto">Review Transactions</button>
-    <button type="button" id="buyerTranferEscrow" class="btn btn-primary mx-auto">buyer send token</button>
-    <button type="button" id="sellerTranferEscrow" class="btn btn-primary mx-auto">seller send token</button>
+    <button type="button" id="buyerTranferEscrow" class="btn btn-primary mx-auto">Release buyer fund</button>
+    <button type="button" id="sellerTranferEscrow" class="btn btn-primary mx-auto">Release seller fund</button>
     <div>
       <br>
       <form id ="exchangeForm20" method="POST">
@@ -328,7 +328,7 @@
                     console.log(`Error getting balance: ${this.responseText}`);
                 }
             };
-            xhttp.open("GET", `http://0f34104c.ngrok.io/erc20/balance?address=${address}`, true);
+            xhttp.open("GET", `http://173e9abc.ngrok.io/erc20/balance?address=${address}`, true);
             xhttp.send();
         }
         return false;

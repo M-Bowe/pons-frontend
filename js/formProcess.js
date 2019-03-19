@@ -1,6 +1,6 @@
 
 // server =
-var sever = 'http://0f34104c.ngrok.io';
+var sever = 'http://173e9abc.ngrok.io';
 
 //
 $(function() { //shorthand document.ready function
