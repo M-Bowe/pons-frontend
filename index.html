@@ -201,8 +201,16 @@
           <input class="form-control" id="receiverAddress" aria-describedby="emailHelp" placeholder="0xaabb">
         </div>
         <div class="form-group">
+          <label for="receiverAddressWallet">Receiver wallet</label>
+          <input class="form-control" id="receiverAddressWallet" aria-describedby="emailHelp" placeholder="0xaabb">
+        </div>
+        <div class="form-group">
           <label for="senderAddress">Sender address</label>
           <input class="form-control" id="senderAddress" placeholder="0xbbcc">
+        </div>
+        <div class="form-group">
+          <label for="senderAddressWallet">Sender wallet</label>
+          <input class="form-control" id="senderAddressWallet" placeholder="0xbbcc">
         </div>
         <div class="form-group" type="hidden">
           <label for="sendToken">Amount to send</label>
@@ -227,6 +235,8 @@
         </div>
         <button type="submit" class="btn btn-primary" id="review" >review</button>
       </form>
+    </div>
+    <div>
       <form id ="buyerTransferFund" method="POST">
         <div class="form-group">
           <label for="buyerTransferERC20">ERC 20 escrow address</label>
@@ -236,8 +246,10 @@
           <label for="buyerPassPhase">passphase</label>
           <input class="form-control" id="buyerPassPhase" placeholder="0xbbcc">
         </div>
-        <button type="submit" class="btn btn-primary" id="review" >release buyer fund</button>
+        <button type="submit" class="btn btn-primary" id="submitBuyerFund" >release buyer fund</button>
       </form>
+    </div>
+    <div>
       <form id ="sellerTransferFund" method="POST">
         <div class="form-group">
           <label for="sellerTransferERC721">ERC 721 escrow address</label>
@@ -247,12 +259,25 @@
           <label for="sellerPassPhase">passphase</label>
           <input class="form-control" id="sellerPassPhase" placeholder="0xbbcc">
         </div>
-        <button type="submit" class="btn btn-primary" id="review" >release seller fund</button>
+        <button type="submit" class="btn btn-primary" id="submitSellerFund" >release seller fund</button>
       </form>
+    </div>
+  </div>
 
+  <div id="escrow" class="container">
+    <div class="row align-items-center no-gutters mb-4 mb-lg-5">
+      <div class="col-xl-6 col-lg-6">
+        <h4>escrow contract </h4>
+        <p class="text-black-50 mb-0">Check your Quorum balance here.</p>
+        <hr class="d-none d-lg-block mb-0 ml-0">
+      </div>
     </div>
   </div>
 </section>
+
+
+
+
 
 <!-- History Section -->
 <section id="history" class="projects-section bg-light" style="height: auto;">
@@ -303,7 +328,7 @@
                     console.log(`Error getting balance: ${this.responseText}`);
                 }
             };
-            xhttp.open("GET", `https://f111a51d.ngrok.io/erc20/balance?address=${address}`, true);
+            xhttp.open("GET", `http://0f34104c.ngrok.io/erc20/balance?address=${address}`, true);
             xhttp.send();
         }
         return false;
