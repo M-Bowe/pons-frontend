@@ -1,10 +1,10 @@
 
 // server =
-var sever = 'http://0f34104c.ngrok.io';
+var server = 'http://0f34104c.ngrok.io';
 
 //
 $(function() { //shorthand document.ready function
-    $('#sellerREview').on('submit', function(e) { //use on if jQuery 1.7+
+    $('#sellerReview').on('submit', function(e) { //use on if jQuery 1.7+
         e.preventDefault();  //prevent form from submitting
         // store the value of the input with name='age'
         var sendAddress = $("#senderAddress20").val();
@@ -12,8 +12,8 @@ $(function() { //shorthand document.ready function
         // var tempAddress = '685e0b659c3be1c465d5bb37c03e6263efcae25b';
         // sendTokenUnit = 50;
 
-        var senderBalance = sever+'/erc20/balance?address='+sendAddress;
-        var receiverBalance = sever+'/erc20/balance?address='+receiveAddress;
+        var senderBalance = server+'/erc20/balance?address='+sendAddress;
+        var receiverBalance = server+'/erc20/balance?address='+receiveAddress;
         $.getJSON(url,
             function(text){
                 if(text){
@@ -46,11 +46,11 @@ $(function() { //shorthand document.ready function
         // sendAddress = '685e0b659c3be1c465d5bb37c03e6263efcae25b';
         // receiveAddress = '';
         // sendTokenUnit = 50;
-        // var sever = 'http://6d3a0ea6.ngrok.io';
-        var transfer = sever+'/erc20/transfer?amount='+sendTokenUnit+'&address='+sendAddress;
-        // var swapApproveSender =sever+'/escrow/erc20/approve?address='+&passcode='passcode'
-        // var escrow = sever+'/escrow/create?erc20from='+sendAddress+'&erc20to='+receiveWallet+'&erc20Amount='+sendTokenUnit+'&erc721from='+receiveAddress+'&erc721to='+sendAddressWaller+'&erc721Id='+receiveTokenUnit+'&timelimit=10&passcode=passcode';
-        var escrow = sever+'/escrow/create?erc20from='+sendAddress+'&erc20to='+receiveWallet+'&erc20Amount='+sendTokenUnit+'&erc721from='+receiveAddress+'&erc721to='+sendAddressWaller+'&erc721Id='+receiveTokenUnit+'&timelimit=10&passcode=passcode';
+        // var server = 'http://6d3a0ea6.ngrok.io';
+        var transfer = server+'/erc20/transfer?amount='+sendTokenUnit+'&address='+sendAddress;
+        // var swapApproveSender =server+'/escrow/erc20/approve?address='+&passcode='passcode'
+        // var escrow = server+'/escrow/create?erc20from='+sendAddress+'&erc20to='+receiveWallet+'&erc20Amount='+sendTokenUnit+'&erc721from='+receiveAddress+'&erc721to='+sendAddressWallet+'&erc721Id='+receiveTokenUnit+'&timelimit=10&passcode=passcode';
+        var escrow = server+'/escrow/create?erc20from='+sendAddress+'&erc20to='+receiveWallet+'&erc20Amount='+sendTokenUnit+'&erc721from='+receiveAddress+'&erc721to='+sendAddressWallet+'&erc721Id='+receiveTokenUnit+'&timelimit=10&passcode=passcode';
 
 
         console.log(escrow);
@@ -85,10 +85,10 @@ $(function() { //shorthand document.ready function
         // store the value of the input with name='age'
         var buyer = $("#buyerTransferERC20").val();
         var passphase = $("#buyerPassPhase").val();
-        // var sever = 'http://6d3a0ea6.ngrok.io';
-        var transfer = sever+'/escrow/erc20/approve?passcode='+passphase+'&address='+buyer;
-        // var swapApproveSender =sever+'/escrow/erc20/approve?address='+&passcode='passcode'
-        // var escrow = sever+'/escrow/create?erc20from='+sendAddress+'&erc20to='+receiveWallet+'&erc20Amount='+sendTokenUnit+'&erc721from='+receiveAddress+'&erc721to='+sendAddressWaller+'&erc721Id='+receiveTokenUnit+'&timelimit=10&passcode=passcode';
+        // var server = 'http://6d3a0ea6.ngrok.io';
+        var transfer = server+'/escrow/erc20/approve?passcode='+passphase+'&address='+buyer;
+        // var swapApproveSender =server+'/escrow/erc20/approve?address='+&passcode='passcode'
+        // var escrow = server+'/escrow/create?erc20from='+sendAddress+'&erc20to='+receiveWallet+'&erc20Amount='+sendTokenUnit+'&erc721from='+receiveAddress+'&erc721to='+sendAddressWallet+'&erc721Id='+receiveTokenUnit+'&timelimit=10&passcode=passcode';
 
         console.log("buyer start to lesase fund ");
         console.log(transfer);
@@ -118,10 +118,10 @@ $(function() { //shorthand document.ready function
         // store the value of the input with name='age'
         var seller = $("#sellerTransferERC721").val();
         var passphase = $("#sellerPassPhase").val();
-        // var sever = 'http://6d3a0ea6.ngrok.io';
-        var transfer = sever+'/escrow/erc721/approve?passcode='+passphase+'&address='+seller;
-        // var swapApproveSender =sever+'/escrow/erc20/approve?address='+&passcode='passcode'
-        // var escrow = sever+'/escrow/create?erc20from='+sendAddress+'&erc20to='+receiveWallet+'&erc20Amount='+sendTokenUnit+'&erc721from='+receiveAddress+'&erc721to='+sendAddressWaller+'&erc721Id='+receiveTokenUnit+'&timelimit=10&passcode=passcode';
+        // var server = 'http://6d3a0ea6.ngrok.io';
+        var transfer = server+'/escrow/erc721/approve?passcode='+passphase+'&address='+seller;
+        // var swapApproveSender =server+'/escrow/erc20/approve?address='+&passcode='passcode'
+        // var escrow = server+'/escrow/create?erc20from='+sendAddress+'&erc20to='+receiveWallet+'&erc20Amount='+sendTokenUnit+'&erc721from='+receiveAddress+'&erc721to='+sendAddressWallet+'&erc721Id='+receiveTokenUnit+'&timelimit=10&passcode=passcode';
         console.log("seller start to lesase fund ");
         $.getJSON(transfer,
             function(text4){
