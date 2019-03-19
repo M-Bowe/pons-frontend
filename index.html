@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="icon" href="img/favicon.ico">
@@ -20,7 +19,7 @@
 
   <!-- Custom styles for this template -->
   <link href="css/grayscale.min.css" rel="stylesheet">
-  <link href="css/custome.css" rel="stylesheet">
+  <link href="css/custom.css" rel="stylesheet">
 </head>
 
 <body id="page-top">
@@ -29,10 +28,12 @@
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
   <div class="container">
     <a class="navbar-brand js-scroll-trigger" href="#page-top">Pons</a>
+
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       Menu
       <i class="fas fa-bars"></i>
     </button>
+
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
@@ -44,11 +45,12 @@
         <li class="nav-item">
           <a class="nav-link js-scroll-trigger" href="#balances">Check Balance</a>
         </li>
-
         <li class="nav-item">
           <a class="nav-link js-scroll-trigger" href="#swap">Swap ERC Tokens</a>
         </li>
-
+        <li class="nav-item">
+          <a class="nav-link js-scroll-trigger" href="#history">History</a>
+        </li>
       </ul>
     </div>
   </div>
@@ -95,7 +97,7 @@
         It utilizes a bridge between two distinct blockchain tokens using the Quorum blockchain environment.
       </p>
 
-      <p> There will be two tokens on seperate blockchains: an ERC20 "cash" token, and an ERC721 loan token. </p>
+      <p> There will be two tokens on separate blockchains: an ERC20 "cash" token, and an ERC721 loan token. </p>
 
       <p> In order for this conversion to take place,
         a "bridge" between these separate blockchain implementations is developed using these two distinct smart contract protocols.
@@ -146,10 +148,8 @@
           </p>
           <img src="img/slide6.PNG"  class="center" width="700px" height="400px">
           <br></br>
-
         </div>
       </div>
-
     </div>
   </div>
 </section>
@@ -178,7 +178,7 @@
   </div>
 </section>
 
-
+<!-- Swap Section -->
 <section id="swap" class="projects-section bg-white" style="top: 500px;">
   <div class="container">
     <div class="row align-items-center no-gutters mb-4 mb-lg-5">
@@ -189,19 +189,19 @@
         <hr class="d-none d-lg-block mb-0 ml-0">
       </div>
     </div>
-    <button type="button" id="erc20Form" class="btn btn-primary mx-auto">contract Transactions</button>
+    <button type="button" id="erc20Form" class="btn btn-primary mx-auto">Contract Transactions</button>
     <button type="button" id="reviewForm" class="btn btn-primary mx-auto">Review Transactions</button>
-    <button type="button" id="buyerTranferEscrow" class="btn btn-primary mx-auto">buyer send token</button>
-    <button type="button" id="sellerTranferEscrow" class="btn btn-primary mx-auto">seller send token</button>
+    <button type="button" id="buyerTransferEscrow" class="btn btn-primary mx-auto">Buyer send token</button>
+    <button type="button" id="sellerTransferEscrow" class="btn btn-primary mx-auto">Seller send token</button>
     <div>
       <br>
       <form id ="exchangeForm20" method="POST">
         <div class="form-group">
-          <label for="receiverAddress">Receiver address</label>
+          <label for="receiverAddress">Receiver Address</label>
           <input class="form-control" id="receiverAddress" aria-describedby="emailHelp" placeholder="0xaabb">
         </div>
         <div class="form-group">
-          <label for="senderAddress">Sender address</label>
+          <label for="senderAddress">Sender Address</label>
           <input class="form-control" id="senderAddress" placeholder="0xbbcc">
         </div>
         <div class="form-group" type="hidden">
@@ -212,44 +212,43 @@
           <label for="receiveToken">Amount to receive</label>
           <input class="form-control" id="receiveToken" placeholder="0xbbcc">
         </div>
-        <button type="submit" class="btn btn-primary" id="submit" >Submit</button>
+        <button type="submit" class="btn btn-primary" id="submit">Submit</button>
       </form>
     </div>
     <div>
-      <form id ="sellerREview" method="POST">
+      <form id ="sellerReview" method="POST">
         <div class="form-group">
-          <label for="buyerERC20">Receiver address</label>
+          <label for="buyerERC20">Receiver Address</label>
           <input class="form-control" id="buyerERC20" aria-describedby="emailHelp" placeholder="0xaabb">
         </div>
         <div class="form-group">
-          <label for="sellerERC721">Sender address</label>
+          <label for="sellerERC721">Sender Address</label>
           <input class="form-control" id="sellerERC721" placeholder="0xbbcc">
         </div>
-        <button type="submit" class="btn btn-primary" id="review" >review</button>
+        <button type="submit" class="btn btn-primary" id="review">Review</button>
       </form>
       <form id ="buyerTransferFund" method="POST">
         <div class="form-group">
-          <label for="buyerTransferERC20">ERC 20 escrow address</label>
+          <label for="buyerTransferERC20">ERC-20 Escrow Address</label>
           <input class="form-control" id="buyerTransferERC20" aria-describedby="emailHelp" placeholder="0xaabb">
         </div>
         <div class="form-group">
-          <label for="buyerPassPhase">passphase</label>
+          <label for="buyerPassPhase">Passphrase</label>
           <input class="form-control" id="buyerPassPhase" placeholder="0xbbcc">
         </div>
-        <button type="submit" class="btn btn-primary" id="review" >release buyer fund</button>
+        <button type="submit" class="btn btn-primary" id="review" >Release Buyer Funds</button>
       </form>
       <form id ="sellerTransferFund" method="POST">
         <div class="form-group">
-          <label for="sellerTransferERC721">ERC 721 escrow address</label>
+          <label for="sellerTransferERC721">ERC-721 Escrow Address</label>
           <input class="form-control" id="sellerTransferERC721" aria-describedby="emailHelp" placeholder="0xaabb">
         </div>
         <div class="form-group">
-          <label for="sellerPassPhase">passphase</label>
+          <label for="sellerPassPhase">Passphrase</label>
           <input class="form-control" id="sellerPassPhase" placeholder="0xbbcc">
         </div>
-        <button type="submit" class="btn btn-primary" id="review" >release seller fund</button>
+        <button type="submit" class="btn btn-primary" id="review">Release Seller Funds</button>
       </form>
-
     </div>
   </div>
 </section>
@@ -260,18 +259,17 @@
     <div class="row align-items-center no-gutters mb-4 mb-lg-5">
       <div class="col-xl-6 col-lg-6">
         <h4>History</h4>
-        <p class="text-black-50 mb-0">View pending and previous transactions here.</p>
+        <p class="text-black-50 mb-0">
+          View pending and previous transactions here.
+        </p>
         <hr class="d-none d-lg-block mb-0 ml-0">
       </div>
     </div>
     <div>
       <div class="col-xl-8 col-lg-8 mx-auto">
         <div class="text-center text-lg-left">
-          <form class="form-inline d-flex" onsubmit="return getHistory();">
-            <input  id="inputHistory" type="text" class="form-control-lg flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" onsubmit="return getHistory();" pattern="^[a-zA-Z0-9]*$" placeholder="Enter wallet address&#8230;" required maxlength="42">
-            <button type="button" onclick="return getHistory();" class="btn btn-primary mx-auto">Submit</button>
-          </form>
-          <div id="history"></div>
+          <button type="button" onclick="return getHistory();" class="btn btn-primary mx-auto">Get History</button>
+          <div id="historyList"></div>
         </div>
       </div>
     </div>
@@ -286,52 +284,6 @@
   </div>
 </footer>
 
-<script>
-    function getBalance() {
-        var address = document.getElementById("inputBalance").value;
-        if (address !== "") {
-            console.log(`Getting balance for ${address}...`);
-            var xhttp = new XMLHttpRequest();
-            xhttp.overrideMimeType("application/json");
-            xhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    var jsonResponse = JSON.parse(this.responseText);
-                    let balance = jsonResponse.data;
-                    document.getElementById("balance").insertAdjacentHTML("afterbegin", `<div class="alert alert-success" role="alert">Balance of wallet ${address}: ${balance}</div>`);
-                }
-                else if (this.status !== 200) {
-                    console.log(`Error getting balance: ${this.responseText}`);
-                }
-            };
-            xhttp.open("GET", `https://f111a51d.ngrok.io/erc20/balance?address=${address}`, true);
-            xhttp.send();
-        }
-        return false;
-    }
-    function getHistory() {
-        var address = document.getElementById("inputHistory").value;
-        if (address !== "") {
-            console.log(`Getting history of transactions for ${address}...`);
-            /*
-            var xhttp = new XMLHttpRequest();
-            xhttp.overrideMimeType("application/json");
-            xhttp.onreadystatechange = function() {
-              if (this.readyState == 4 && this.status == 200) {
-                var jsonResponse = JSON.parse(this.responseText);
-                let balance = jsonResponse.data;
-                document.getElementById("balance").insertAdjacentHTML("afterbegin", `<div class="alert alert-success" role="alert">Balance of wallet ${address}: ${balance}</div>`);
-              }
-              else if (this.status !== 200) {
-                console.log(`Error getting balance: ${this.responseText}`);
-              }
-            };
-            xhttp.open("GET", `https://f111a51d.ngrok.io/erc20/balance?address=${address}`, true);
-            xhttp.send(); */
-        }
-        return false;
-    }
-</script>
-
 <!-- Bootstrap core scripts -->
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -341,6 +293,7 @@
 
 <!-- Custom scripts -->
 <script src="js/grayscale.min.js"></script>
+
 <!-- back end scripts -->
 <script src="js/formProcess.js"></script>
 
