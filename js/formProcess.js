@@ -1,6 +1,6 @@
 
 // server =
-var server = 'http://0f34104c.ngrok.io';
+var server = 'http://fd2ec5ad.ngrok.io';
 
 //
 $(function() { //shorthand document.ready function
@@ -64,6 +64,7 @@ $(function() { //shorthand document.ready function
                     var escrow721 = data.erc721EscrowAddress;
                     console.log("escoew 20 : "+escrow20);
                     console.log("escoew 721 : "+escrow721);
+                    document.getElementById("escrow").innerHTML = "";
                     document.getElementById("escrow").insertAdjacentHTML("afterbegin", `<div class="alert alert-success" role="alert">contract address escrow 20:  ${escrow20}</div>`);
                     document.getElementById("escrow").insertAdjacentHTML("afterbegin", `<div class="alert alert-success" role="alert">contract address escroew 721: ${escrow721}</div>`);
 
@@ -84,9 +85,9 @@ $(function() { //shorthand document.ready function
         e.preventDefault();  //prevent form from submitting
         // store the value of the input with name='age'
         var buyer = $("#buyerTransferERC20").val();
-        var passphase = $("#buyerPassPhase").val();
+        var passphrase = $("#buyerPassphrase").val();
         // var server = 'http://6d3a0ea6.ngrok.io';
-        var transfer = server+'/escrow/erc20/approve?passcode='+passphase+'&address='+buyer;
+        var transfer = server+'/escrow/erc20/approve?passcode='+passphrase+'&address='+buyer;
         // var swapApproveSender =server+'/escrow/erc20/approve?address='+&passcode='passcode'
         // var escrow = server+'/escrow/create?erc20from='+sendAddress+'&erc20to='+receiveWallet+'&erc20Amount='+sendTokenUnit+'&erc721from='+receiveAddress+'&erc721to='+sendAddressWallet+'&erc721Id='+receiveTokenUnit+'&timelimit=10&passcode=passcode';
 
@@ -117,9 +118,9 @@ $(function() { //shorthand document.ready function
         e.preventDefault();  //prevent form from submitting
         // store the value of the input with name='age'
         var seller = $("#sellerTransferERC721").val();
-        var passphase = $("#sellerPassPhase").val();
+        var passphrase = $("#sellerPassphrase").val();
         // var server = 'http://6d3a0ea6.ngrok.io';
-        var transfer = server+'/escrow/erc721/approve?passcode='+passphase+'&address='+seller;
+        var transfer = server+'/escrow/erc721/approve?passcode='+passphrase+'&address='+seller;
         // var swapApproveSender =server+'/escrow/erc20/approve?address='+&passcode='passcode'
         // var escrow = server+'/escrow/create?erc20from='+sendAddress+'&erc20to='+receiveWallet+'&erc20Amount='+sendTokenUnit+'&erc721from='+receiveAddress+'&erc721to='+sendAddressWallet+'&erc721Id='+receiveTokenUnit+'&timelimit=10&passcode=passcode';
         console.log("seller start to lesase fund ");
@@ -170,6 +171,7 @@ $("#buyerTransferEscrow").click(function(){
 });
 
 function getBalance() {
+    document.getElementById("balance").innerHTML = "";
     var address = document.getElementById("inputBalance").value;
     if (address !== "") {
         console.log(`Getting balance for ${address}...`);
@@ -182,16 +184,17 @@ function getBalance() {
                 document.getElementById("balance").insertAdjacentHTML("afterbegin", `<div class="alert alert-success" role="alert">Balance of wallet ${address}: ${balance}</div>`);
             }
             else if (this.status !== 200) {
-                console.log(`Error getting balance: ${this.responseText}`);
+                console.log(`Error getting balance, status ${this.status} ${this.responseText}`);
             }
         };
-        xhttp.open("GET", `https://12e5f087.ngrok.io/erc20/balance?address=${address}`, true);
+        xhttp.open("GET", `${server}/erc20/balance?address=${address}`, true);
         xhttp.send();
     }
     return false;
 }
 
 function getHistory() {
+    document.getElementById("historyList").innerHTML = "";
     console.log(`Getting history of transactions...`);
 
     // Get the latest block number, then show its list of transactions
@@ -206,25 +209,29 @@ function getHistory() {
         getList.overrideMimeType("application/json");
         getList.onreadystatechange = function() {
           if (this.readyState == 4 && this.status == 200) {
-            console.log(`Getting transactions on most recent block ${latestBlock}...`);
+            console.log(`Getting transactions on most recent block ${latestBlock}`);
             var history = JSON.parse(this.responseText).data;
 
-            console.log(`List of transactions on latest block ${latestBlock}: ${JSON.stringify(history)}`);
             // Loop through each transaction and display the Hash, To, From, Value
-            document.getElementById("historyList").insertAdjacentHTML("afterbegin", `<div class="alert alert-success" role="alert">Transaction list: ${JSON.stringify(history, null, 2)}</div>`);
+            history.forEach(function(transaction) {
+              let fromAddress = JSON.stringify(transaction.from);
+              let toAddress = JSON.stringify(transaction.to);
+              let value = JSON.stringify(transaction.value);
+              document.getElementById("historyList").insertAdjacentHTML("afterbegin", `<div class="alert alert-success" role="alert">Latest transaction:<br>From: ${fromAddress}<br>To: ${toAddress}<br>Amount: ${value}</div>`);
+            });
           }
           else if (this.status !== 200) {
             console.log(`Error getting transactions: ${this.responseText}`);
           }
         };
-        getList.open("GET", `https://a1afccc0.ngrok.io/blockchain/getBlock?blockNum=${latestBlock}`, true);
+        getList.open("GET", `${server}/blockchain/getBlock?blockNum=${latestBlock}`, true);
         getList.send();
       }
       else if (this.status !== 200) {
         console.log(`Error getting transactions: ${this.responseText}`);
       }
     };
-    getBlock.open("GET", `https://a1afccc0.ngrok.io/blockchain/getLatestBlock`, true);
+    getBlock.open("GET", `${server}/blockchain/getLatestBlock`, true);
     getBlock.send();
 
     return false;
