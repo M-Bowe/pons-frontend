@@ -189,10 +189,10 @@
         <hr class="d-none d-lg-block mb-0 ml-0">
       </div>
     </div>
-    <button type="button" id="erc20Form" class="btn btn-primary mx-auto">Contract Transactions</button>
-    <button type="button" id="reviewForm" class="btn btn-primary mx-auto">Review Transactions</button>
-    <button type="button" id="buyerTransferEscrow" class="btn btn-primary mx-auto">Buyer send token</button>
-    <button type="button" id="sellerTransferEscrow" class="btn btn-primary mx-auto">Seller send token</button>
+    <button type="button" id="erc20Form" class="btn btn-secondary mx-auto">Contract Transactions</button>
+    <button type="button" id="reviewForm" class="btn btn-secondary mx-auto">Review Transactions</button>
+    <button type="button" id="buyerTransferEscrow" class="btn btn-secondary mx-auto">Buyer send token</button>
+    <button type="button" id="sellerTransferEscrow" class="btn btn-secondary mx-auto">Seller send token</button>
     <div>
       <br>
       <form id ="exchangeForm20" method="POST">
@@ -236,7 +236,7 @@
           <label for="receiveToken">Amount to receive</label>
           <input class="form-control" id="receiveToken" placeholder="0xbbcc">
         </div>
-        <button type="submit" class="btn btn-primary" id="submit">Submit</button>
+        <button type="submit" class="btn btn-primary btn-block" id="submit">Submit</button>
       </form>
     </div>
     <div>
@@ -264,7 +264,7 @@
           <label for="sellerERC721">Sender Address</label>
           <input class="form-control" id="sellerERC721" placeholder="0xbbcc">
         </div>
-        <button type="submit" class="btn btn-primary" id="review">Review</button>
+        <button type="submit" class="btn btn-primary btn-block" id="review">Review</button>
       </form>
     </div>
     <div>
@@ -292,7 +292,7 @@
           <label for="buyerPassphrase">Passphrase</label>
           <input class="form-control" id="buyerPassphrase" placeholder="0xbbcc">
         </div>
-        <button type="submit" class="btn btn-primary" id="submitBuyerFund" >release buyer fund</button>
+        <button type="submit" class="btn btn-primary btn-block" id="submitBuyerFund" >release buyer fund</button>
       </form>
     </div>
     <div>
@@ -321,10 +321,10 @@
           <label for="sellerPassphrase">Passphrase</label>
           <input class="form-control" id="sellerPassphrase" placeholder="0xbbcc">
         </div>
-        <button type="submit" class="btn btn-primary" id="submitSellerFund" >release seller fund</button>
+        <button type="submit" class="btn btn-primary btn-block" id="submitSellerFund" >release seller fund</button>
       </form>
     </div>
-  </div>
+  </div><br>
 
   <div id="escrow" class="container">
     <div class="row align-items-center no-gutters mb-4 mb-lg-5">
@@ -335,10 +335,6 @@
     </div>
   </div>
 </section>
-
-
-
-
 
 <!-- History Section -->
 <section id="history" class="projects-section bg-light" style="height: auto;">
@@ -367,7 +363,11 @@
 <!-- Footer -->
 <footer class="bg-black small text-center text-white-50">
   <div class="container">
-    Pons 2019
+    Pons - A collaboration between<br>
+    <a class="btn btn-outline-warning" href="https://www.se.rit.edu/" target="_blank">Rochester Institute of Technology</a>
+    &
+    <a class="btn btn-outline-info" href="https://www.jpmorgan.com/global/Quorum" target="_blank">Quorum</a><br>
+    2019
   </div>
 </footer>
 
