@@ -28,9 +28,11 @@ $(function() {
 });
 
 // swap function
-$(function() {
-    $('#exchangeForm20').on('submit', function(e) {
-        e.preventDefault();
+$(function() { //shorthand document.ready function
+    $('#exchangeForm20').on('submit', function(e) { //use on if jQuery 1.7+
+        e.preventDefault();  //prevent form from submitting
+        $("#loadIcon").toggle();
+        // store the value of the input with name='age'
         var sendAddress = $("#senderAddress").val();
         var sendAddressWallet = $("#senderAddressWallet").val();
         var receiveAddress = $("#receiverAddress").val();
@@ -42,7 +44,8 @@ $(function() {
         // sendAddress = '685e0b659c3be1c465d5bb37c03e6263efcae25b';
         // receiveAddress = '';
         // sendTokenUnit = 50;
-        var transfer = server+'/erc20/transfer?amount='+sendTokenUnit+'&address='+sendAddress;
+        // var server = 'http://6d3a0ea6.ngrok.io';
+        // var transfer = server+'/erc20/transfer?amount='+sendTokenUnit+'&address='+sendAddress;
         // var swapApproveSender =server+'/escrow/erc20/approve?address='+&passcode='passcode'
         // var escrow = server+'/escrow/create?erc20from='+sendAddress+'&erc20to='+receiveWallet+'&erc20Amount='+sendTokenUnit+'&erc721from='+receiveAddress+'&erc721to='+sendAddressWallet+'&erc721Id='+receiveTokenUnit+'&timelimit=10&passcode=passcode';
         var escrow = server+'/escrow/create?erc20from='+sendAddress+'&erc20to='+receiveWallet+'&erc20Amount='+sendTokenUnit+'&erc721from='+receiveAddress+'&erc721to='+sendAddressWallet+'&erc721Id='+receiveTokenUnit+'&timelimit=10&passcode=passcode';
@@ -59,7 +62,9 @@ $(function() {
                     var escrow721 = data.erc721EscrowAddress;
                     console.log("escoew 20 : "+escrow20);
                     console.log("escoew 721 : "+escrow721);
+                    $("#loadIcon").toggle();
                     document.getElementById("escrow").innerHTML = "";
+
                     document.getElementById("escrow").insertAdjacentHTML("afterbegin", `<div class="alert alert-success" role="alert">contract address escrow 20:  ${escrow20}</div>`);
                     document.getElementById("escrow").insertAdjacentHTML("afterbegin", `<div class="alert alert-success" role="alert">contract address escroew 721: ${escrow721}</div>`);
 
@@ -111,7 +116,7 @@ $(function() {
         e.preventDefault();
         var seller = $("#sellerTransferERC721").val();
         var passphrase = $("#sellerPassphrase").val();
-        
+
         var transfer = server+'/escrow/erc721/approve?passcode='+passphrase+'&address='+seller;
         // var swapApproveSender =server+'/escrow/erc20/approve?address='+&passcode='passcode'
         // var escrow = server+'/escrow/create?erc20from='+sendAddress+'&erc20to='+receiveWallet+'&erc20Amount='+sendTokenUnit+'&erc721from='+receiveAddress+'&erc721to='+sendAddressWallet+'&erc721Id='+receiveTokenUnit+'&timelimit=10&passcode=passcode';
@@ -138,28 +143,64 @@ $(function() {
 
 
 $('#erc20Form').click(function(){
+
+    if ($("#sellerReview").is(":visible")) {
+            $("#sellerReview").toggle()
+    }
+    if ($("#sellerTransferFund").is(":visible")) {
+        $("#sellerTransferFund").toggle()
+    }
+    if ($("#buyerTransferFund").is(":visible")) {
+        $("#buyerTransferFund").toggle()
+    }
+
     $("#exchangeForm20").toggle();
-    // if ($("#exchangeForm721").is(":visible")) {
-    //     //     $("#exchangeForm721").toggle()
-    //     // }
 });
 
 $("#reviewForm").click(function(){
+    if ($("#exchangeForm20").is(":visible")) {
+        $("#exchangeForm20").toggle()
+    }
+    if ($("#sellerTransferFund").is(":visible")) {
+        $("#sellerTransferFund").toggle()
+    }
+    if ($("#buyerTransferFund").is(":visible")) {
+        $("#buyerTransferFund").toggle()
+    }
+
     $("#sellerReview").toggle();
-    // if ($("#exchangeForm20").is(":visible")) {
-    //     $("#exchangeForm20").toggle()
-    // }
+
 });
 
 $("#sellerTransferEscrow").click(function(){
+    if ($("#exchangeForm20").is(":visible")) {
+        $("#exchangeForm20").toggle()
+    }
+    if ($("#sellerReview").is(":visible")) {
+        $("#sellerReview").toggle()
+    }
+    if ($("#buyerTransferFund").is(":visible")) {
+        $("#buyerTransferFund").toggle()
+    }
+
+
     $("#sellerTransferFund").toggle();
+
 });
 
 $("#buyerTransferEscrow").click(function(){
+    if ($("#exchangeForm20").is(":visible")) {
+        $("#exchangeForm20").toggle()
+    }
+    if ($("#sellerReview").is(":visible")) {
+        $("#sellerReview").toggle()
+    }
+    if ($("#sellerTransferFund").is(":visible")) {
+        $("#sellerTransferFund").toggle()
+    }
+
     $("#buyerTransferFund").toggle();
-    // if ($("#exchangeForm20").is(":visible")) {
-    //     $("#exchangeForm20").toggle()
-    // }
+
 });
 
 function getBalance() {
