@@ -1,10 +1,11 @@
 
-// server =
-var sever = 'http://173e9abc.ngrok.io';
+
+var server = 'http://fd2ec5ad.ngrok.io';
+
 
 //
 $(function() { //shorthand document.ready function
-    $('#sellerREview').on('submit', function(e) { //use on if jQuery 1.7+
+    $('#sellerReview').on('submit', function(e) { //use on if jQuery 1.7+
         e.preventDefault();  //prevent form from submitting
         // store the value of the input with name='age'
         var sendAddress = $("#senderAddress20").val();
@@ -12,8 +13,8 @@ $(function() { //shorthand document.ready function
         // var tempAddress = '685e0b659c3be1c465d5bb37c03e6263efcae25b';
         // sendTokenUnit = 50;
 
-        var senderBalance = sever+'/erc20/balance?address='+sendAddress;
-        var receiverBalance = sever+'/erc20/balance?address='+receiveAddress;
+        var senderBalance = server+'/erc20/balance?address='+sendAddress;
+        var receiverBalance = server+'/erc20/balance?address='+receiveAddress;
         $.getJSON(url,
             function(text){
                 if(text){
@@ -33,9 +34,10 @@ $(function() { //shorthand document.ready function
 $(function() { //shorthand document.ready function
     $('#exchangeForm20').on('submit', function(e) { //use on if jQuery 1.7+
         e.preventDefault();  //prevent form from submitting
+        $("#loadIcon").toggle();
         // store the value of the input with name='age'
         var sendAddress = $("#senderAddress").val();
-        var sendAddressWaller = $("#senderAddressWallet").val();
+        var sendAddressWallet = $("#senderAddressWallet").val();
         var receiveAddress = $("#receiverAddress").val();
         var receiveWallet =  $("#receiverAddressWallet").val();
         var sendTokenUnit = $("#sendToken").val();
@@ -46,11 +48,11 @@ $(function() { //shorthand document.ready function
         // sendAddress = '685e0b659c3be1c465d5bb37c03e6263efcae25b';
         // receiveAddress = '';
         // sendTokenUnit = 50;
-        // var sever = 'http://6d3a0ea6.ngrok.io';
-        var transfer = sever+'/erc20/transfer?amount='+sendTokenUnit+'&address='+sendAddress;
-        // var swapApproveSender =sever+'/escrow/erc20/approve?address='+&passcode='passcode'
-        // var escrow = sever+'/escrow/create?erc20from='+sendAddress+'&erc20to='+receiveWallet+'&erc20Amount='+sendTokenUnit+'&erc721from='+receiveAddress+'&erc721to='+sendAddressWaller+'&erc721Id='+receiveTokenUnit+'&timelimit=10&passcode=passcode';
-        var escrow = sever+'/escrow/create?erc20from='+sendAddress+'&erc20to='+receiveWallet+'&erc20Amount='+sendTokenUnit+'&erc721from='+receiveAddress+'&erc721to='+sendAddressWaller+'&erc721Id='+receiveTokenUnit+'&timelimit=10&passcode=passcode';
+        // var server = 'http://6d3a0ea6.ngrok.io';
+        // var transfer = server+'/erc20/transfer?amount='+sendTokenUnit+'&address='+sendAddress;
+        // var swapApproveSender =server+'/escrow/erc20/approve?address='+&passcode='passcode'
+        // var escrow = server+'/escrow/create?erc20from='+sendAddress+'&erc20to='+receiveWallet+'&erc20Amount='+sendTokenUnit+'&erc721from='+receiveAddress+'&erc721to='+sendAddressWallet+'&erc721Id='+receiveTokenUnit+'&timelimit=10&passcode=passcode';
+        var escrow = server+'/escrow/create?erc20from='+sendAddress+'&erc20to='+receiveWallet+'&erc20Amount='+sendTokenUnit+'&erc721from='+receiveAddress+'&erc721to='+sendAddressWallet+'&erc721Id='+receiveTokenUnit+'&timelimit=10&passcode=passcode';
 
 
         console.log(escrow);
@@ -64,6 +66,7 @@ $(function() { //shorthand document.ready function
                     var escrow721 = data.erc721EscrowAddress;
                     console.log("escoew 20 : "+escrow20);
                     console.log("escoew 721 : "+escrow721);
+                    $("#loadIcon").toggle();
                     document.getElementById("escrow").insertAdjacentHTML("afterbegin", `<div class="alert alert-success" role="alert">contract address escrow 20:  ${escrow20}</div>`);
                     document.getElementById("escrow").insertAdjacentHTML("afterbegin", `<div class="alert alert-success" role="alert">contract address escroew 721: ${escrow721}</div>`);
 
@@ -85,10 +88,10 @@ $(function() { //shorthand document.ready function
         // store the value of the input with name='age'
         var buyer = $("#buyerTransferERC20").val();
         var passphase = $("#buyerPassPhase").val();
-        // var sever = 'http://6d3a0ea6.ngrok.io';
-        var transfer = sever+'/escrow/erc20/approve?passcode='+passphase+'&address='+buyer;
-        // var swapApproveSender =sever+'/escrow/erc20/approve?address='+&passcode='passcode'
-        // var escrow = sever+'/escrow/create?erc20from='+sendAddress+'&erc20to='+receiveWallet+'&erc20Amount='+sendTokenUnit+'&erc721from='+receiveAddress+'&erc721to='+sendAddressWaller+'&erc721Id='+receiveTokenUnit+'&timelimit=10&passcode=passcode';
+        // var server = 'http://6d3a0ea6.ngrok.io';
+        var transfer = server+'/escrow/erc20/approve?passcode='+passphase+'&address='+buyer;
+        // var swapApproveSender =server+'/escrow/erc20/approve?address='+&passcode='passcode'
+        // var escrow = server+'/escrow/create?erc20from='+sendAddress+'&erc20to='+receiveWallet+'&erc20Amount='+sendTokenUnit+'&erc721from='+receiveAddress+'&erc721to='+sendAddressWallet+'&erc721Id='+receiveTokenUnit+'&timelimit=10&passcode=passcode';
 
         console.log("buyer start to lesase fund ");
         console.log(transfer);
@@ -118,10 +121,10 @@ $(function() { //shorthand document.ready function
         // store the value of the input with name='age'
         var seller = $("#sellerTransferERC721").val();
         var passphase = $("#sellerPassPhase").val();
-        // var sever = 'http://6d3a0ea6.ngrok.io';
-        var transfer = sever+'/escrow/erc721/approve?passcode='+passphase+'&address='+seller;
-        // var swapApproveSender =sever+'/escrow/erc20/approve?address='+&passcode='passcode'
-        // var escrow = sever+'/escrow/create?erc20from='+sendAddress+'&erc20to='+receiveWallet+'&erc20Amount='+sendTokenUnit+'&erc721from='+receiveAddress+'&erc721to='+sendAddressWaller+'&erc721Id='+receiveTokenUnit+'&timelimit=10&passcode=passcode';
+        // var server = 'http://6d3a0ea6.ngrok.io';
+        var transfer = server+'/escrow/erc721/approve?passcode='+passphase+'&address='+seller;
+        // var swapApproveSender =server+'/escrow/erc20/approve?address='+&passcode='passcode'
+        // var escrow = server+'/escrow/create?erc20from='+sendAddress+'&erc20to='+receiveWallet+'&erc20Amount='+sendTokenUnit+'&erc721from='+receiveAddress+'&erc721to='+sendAddressWallet+'&erc721Id='+receiveTokenUnit+'&timelimit=10&passcode=passcode';
         console.log("seller start to lesase fund ");
         $.getJSON(transfer,
             function(text4){
@@ -145,26 +148,123 @@ $(function() { //shorthand document.ready function
 
 
 $('#erc20Form').click(function(){
+
+    if ($("#sellerReview").is(":visible")) {
+            $("#sellerReview").toggle()
+    }
+    if ($("#sellerTransferFund").is(":visible")) {
+        $("#sellerTransferFund").toggle()
+    }
+    if ($("#buyerTransferFund").is(":visible")) {
+        $("#buyerTransferFund").toggle()
+    }
+
     $("#exchangeForm20").toggle();
-    // if ($("#exchangeForm721").is(":visible")) {
-    //     //     $("#exchangeForm721").toggle()
-    //     // }
 });
 
 $("#reviewForm").click(function(){
-    $("#sellerREview").toggle();
-    // if ($("#exchangeForm20").is(":visible")) {
-    //     $("#exchangeForm20").toggle()
-    // }
+    if ($("#exchangeForm20").is(":visible")) {
+        $("#exchangeForm20").toggle()
+    }
+    if ($("#sellerTransferFund").is(":visible")) {
+        $("#sellerTransferFund").toggle()
+    }
+    if ($("#buyerTransferFund").is(":visible")) {
+        $("#buyerTransferFund").toggle()
+    }
+
+    $("#sellerReview").toggle();
+
 });
 
 $("#sellerTranferEscrow").click(function(){
+    if ($("#exchangeForm20").is(":visible")) {
+        $("#exchangeForm20").toggle()
+    }
+    if ($("#sellerReview").is(":visible")) {
+        $("#sellerReview").toggle()
+    }
+    if ($("#buyerTransferFund").is(":visible")) {
+        $("#buyerTransferFund").toggle()
+    }
+
+
     $("#sellerTransferFund").toggle();
+
 });
 
 $("#buyerTranferEscrow").click(function(){
+    if ($("#exchangeForm20").is(":visible")) {
+        $("#exchangeForm20").toggle()
+    }
+    if ($("#sellerReview").is(":visible")) {
+        $("#sellerReview").toggle()
+    }
+    if ($("#sellerTransferFund").is(":visible")) {
+        $("#sellerTransferFund").toggle()
+    }
+
     $("#buyerTransferFund").toggle();
-    // if ($("#exchangeForm20").is(":visible")) {
-    //     $("#exchangeForm20").toggle()
-    // }
+
 });
+
+function getBalance() {
+    var address = document.getElementById("inputBalance").value;
+    if (address !== "") {
+        console.log(`Getting balance for ${address}...`);
+        var xhttp = new XMLHttpRequest();
+        xhttp.overrideMimeType("application/json");
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                var jsonResponse = JSON.parse(this.responseText);
+                let balance = jsonResponse.data;
+                document.getElementById("balance").insertAdjacentHTML("afterbegin", `<div class="alert alert-success" role="alert">Balance of wallet ${address}: ${balance}</div>`);
+            }
+            else if (this.status !== 200) {
+                console.log(`Error getting balance: ${this.responseText}`);
+            }
+        };
+        xhttp.open("GET", `${server}/erc20/balance?address=${address}`, true);
+        xhttp.send();
+    }
+    return false;
+}
+
+function getHistory() {
+    console.log(`Getting history of transactions...`);
+
+    // Get the latest block number, then show its list of transactions
+    var getBlock = new XMLHttpRequest();
+    getBlock.overrideMimeType("application/json");
+    getBlock.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        var jsonResponse = JSON.parse(this.responseText);
+        let latestBlock = jsonResponse.data;
+
+        var getList = new XMLHttpRequest();
+        getList.overrideMimeType("application/json");
+        getList.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            console.log(`Getting transactions on most recent block ${latestBlock}...`);
+            var history = JSON.parse(this.responseText).data;
+
+            console.log(`List of transactions on latest block ${latestBlock}: ${JSON.stringify(history)}`);
+            // Loop through each transaction and display the Hash, To, From, Value
+            document.getElementById("historyList").insertAdjacentHTML("afterbegin", `<div class="alert alert-success" role="alert">Transaction list: ${JSON.stringify(history, null, 2)}</div>`);
+          }
+          else if (this.status !== 200) {
+            console.log(`Error getting transactions: ${this.responseText}`);
+          }
+        };
+        getList.open("GET", `${server}/blockchain/getBlock?blockNum=${latestBlock}`, true);
+        getList.send();
+      }
+      else if (this.status !== 200) {
+        console.log(`Error getting transactions: ${this.responseText}`);
+      }
+    };
+    getBlock.open("GET", `${server}/blockchain/getLatestBlock`, true);
+    getBlock.send();
+
+    return false;
+}
