@@ -1,12 +1,10 @@
-
-// server =
-var server = 'http://fd2ec5ad.ngrok.io';
+// Set server instance = 'x.ngrok.io';
+var server = 'http://059111a9.ngrok.io';
 
 //
-$(function() { //shorthand document.ready function
-    $('#sellerReview').on('submit', function(e) { //use on if jQuery 1.7+
-        e.preventDefault();  //prevent form from submitting
-        // store the value of the input with name='age'
+$(function() {
+    $('#sellerReview').on('submit', function(e) {
+        e.preventDefault();
         var sendAddress = $("#senderAddress20").val();
         var receiveAddress = $("#receiverAddress20").val();
         // var tempAddress = '685e0b659c3be1c465d5bb37c03e6263efcae25b';
@@ -30,10 +28,9 @@ $(function() { //shorthand document.ready function
 });
 
 // swap function
-$(function() { //shorthand document.ready function
-    $('#exchangeForm20').on('submit', function(e) { //use on if jQuery 1.7+
-        e.preventDefault();  //prevent form from submitting
-        // store the value of the input with name='age'
+$(function() {
+    $('#exchangeForm20').on('submit', function(e) {
+        e.preventDefault();
         var sendAddress = $("#senderAddress").val();
         var sendAddressWallet = $("#senderAddressWallet").val();
         var receiveAddress = $("#receiverAddress").val();
@@ -41,12 +38,10 @@ $(function() { //shorthand document.ready function
         var sendTokenUnit = $("#sendToken").val();
         var receiveTokenUnit = $("#receiveToken").val();
         // var receiveTokentUnit = $("#receiveToken20").val();
-        // https://www.linkedin.com/in/william-duong-4bb32a12b/
 
         // sendAddress = '685e0b659c3be1c465d5bb37c03e6263efcae25b';
         // receiveAddress = '';
         // sendTokenUnit = 50;
-        // var server = 'http://6d3a0ea6.ngrok.io';
         var transfer = server+'/erc20/transfer?amount='+sendTokenUnit+'&address='+sendAddress;
         // var swapApproveSender =server+'/escrow/erc20/approve?address='+&passcode='passcode'
         // var escrow = server+'/escrow/create?erc20from='+sendAddress+'&erc20to='+receiveWallet+'&erc20Amount='+sendTokenUnit+'&erc721from='+receiveAddress+'&erc721to='+sendAddressWallet+'&erc721Id='+receiveTokenUnit+'&timelimit=10&passcode=passcode';
@@ -80,13 +75,11 @@ $(function() { //shorthand document.ready function
     });
 });
 
-$(function() { //shorthand document.ready function
-    $('#buyerTransferFund').on('submit', function(e) { //use on if jQuery 1.7+
-        e.preventDefault();  //prevent form from submitting
-        // store the value of the input with name='age'
+$(function() {
+    $('#buyerTransferFund').on('submit', function(e) {
+        e.preventDefault();
         var buyer = $("#buyerTransferERC20").val();
         var passphrase = $("#buyerPassphrase").val();
-        // var server = 'http://6d3a0ea6.ngrok.io';
         var transfer = server+'/escrow/erc20/approve?passcode='+passphrase+'&address='+buyer;
         // var swapApproveSender =server+'/escrow/erc20/approve?address='+&passcode='passcode'
         // var escrow = server+'/escrow/create?erc20from='+sendAddress+'&erc20to='+receiveWallet+'&erc20Amount='+sendTokenUnit+'&erc721from='+receiveAddress+'&erc721to='+sendAddressWallet+'&erc721Id='+receiveTokenUnit+'&timelimit=10&passcode=passcode';
@@ -113,13 +106,12 @@ $(function() { //shorthand document.ready function
 });
 
 
-$(function() { //shorthand document.ready function
-    $('#sellerTransferFund').on('submit', function(e) { //use on if jQuery 1.7+
-        e.preventDefault();  //prevent form from submitting
-        // store the value of the input with name='age'
+$(function() {
+    $('#sellerTransferFund').on('submit', function(e) {
+        e.preventDefault();
         var seller = $("#sellerTransferERC721").val();
         var passphrase = $("#sellerPassphrase").val();
-        // var server = 'http://6d3a0ea6.ngrok.io';
+        
         var transfer = server+'/escrow/erc721/approve?passcode='+passphrase+'&address='+seller;
         // var swapApproveSender =server+'/escrow/erc20/approve?address='+&passcode='passcode'
         // var escrow = server+'/escrow/create?erc20from='+sendAddress+'&erc20to='+receiveWallet+'&erc20Amount='+sendTokenUnit+'&erc721from='+receiveAddress+'&erc721to='+sendAddressWallet+'&erc721Id='+receiveTokenUnit+'&timelimit=10&passcode=passcode';
@@ -224,7 +216,7 @@ function getHistory() {
             console.log(`Error getting transactions: ${this.responseText}`);
           }
         };
-        getList.open("GET", `${server}/blockchain/getBlock?blockNum=${latestBlock}`, true);
+        getList.open("GET", `${server}/blockchain/getTransactions?num=10`, true);
         getList.send();
       }
       else if (this.status !== 200) {
