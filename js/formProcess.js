@@ -1,5 +1,5 @@
 // Set server instance = 'x.ngrok.io';
-var server = 'http://059111a9.ngrok.io';
+var server = 'http://aeb1e9e0.ngrok.io';
 
 //
 $(function() {
@@ -204,23 +204,25 @@ $("#buyerTransferEscrow").click(function(){
 });
 
 function getBalance() {
-    document.getElementById("balance").innerHTML = "";
-    var address = document.getElementById("inputBalance").value;
+    $("balance").innerHTML = "";
+    var address = $("inputBalance").value;
     if (address !== "") {
-        console.log(`Getting balance for ${address}...`);
+        console.log(`Checking token type and getting balance for ${address}...`);
+        var token = (($("#is721Balance").is(":checked")) ? 'erc721' : 'erc20');
+
         var xhttp = new XMLHttpRequest();
         xhttp.overrideMimeType("application/json");
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 var jsonResponse = JSON.parse(this.responseText);
                 let balance = jsonResponse.data;
-                document.getElementById("balance").insertAdjacentHTML("afterbegin", `<div class="alert alert-success" role="alert">Balance of wallet ${address}: ${balance}</div>`);
+                $("balance").insertAdjacentHTML("afterbegin", `<div class="alert alert-success" role="alert">Balance of wallet ${address}: ${balance}</div>`);
             }
             else if (this.status !== 200) {
                 console.log(`Error getting balance, status ${this.status} ${this.responseText}`);
             }
         };
-        xhttp.open("GET", `${server}/erc20/balance?address=${address}`, true);
+        xhttp.open("GET", `${server}/${token}/balance?address=${address}`, true);
         xhttp.send();
     }
     return false;
