@@ -1,5 +1,5 @@
 // Set server instance = 'x.ngrok.io';
-var server = 'http://aeb1e9e0.ngrok.io';
+var server = 'http://c30cc5a0.ngrok.io';
 
 //
 $(function() {
@@ -204,8 +204,8 @@ $("#buyerTransferEscrow").click(function(){
 });
 
 function getBalance() {
-    $("balance").innerHTML = "";
-    var address = $("inputBalance").value;
+    document.getElementById("balance").innerHTML = "";
+    var address = document.getElementById("inputBalance").value;
     if (address !== "") {
         console.log(`Checking token type and getting balance for ${address}...`);
         var token = (($("#is721Balance").is(":checked")) ? 'erc721' : 'erc20');
@@ -216,7 +216,7 @@ function getBalance() {
             if (this.readyState == 4 && this.status == 200) {
                 var jsonResponse = JSON.parse(this.responseText);
                 let balance = jsonResponse.data;
-                $("balance").insertAdjacentHTML("afterbegin", `<div class="alert alert-success" role="alert">Balance of wallet ${address}: ${balance}</div>`);
+                document.getElementById("balance").insertAdjacentHTML("afterbegin", `<div class="alert alert-success" role="alert">Balance of wallet ${address}: ${balance}</div>`);
             }
             else if (this.status !== 200) {
                 console.log(`Error getting balance, status ${this.status} ${this.responseText}`);
