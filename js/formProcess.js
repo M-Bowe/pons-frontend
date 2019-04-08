@@ -1,6 +1,6 @@
 
 
-var server = 'http://059111a9.ngrok.io';
+var server = 'http://abc05d48.ngrok.io';
 
 
 $(function() { //shorthand document.ready function
@@ -51,7 +51,7 @@ $(function() { //shorthand document.ready function
         // var transfer = server+'/erc20/transfer?amount='+sendTokenUnit+'&address='+sendAddress;
         // var swapApproveSender =server+'/escrow/erc20/approve?address='+&passcode='passcode'
         // var escrow = server+'/escrow/create?erc20from='+sendAddress+'&erc20to='+receiveWallet+'&erc20Amount='+sendTokenUnit+'&erc721from='+receiveAddress+'&erc721to='+sendAddressWallet+'&erc721Id='+receiveTokenUnit+'&timelimit=10&passcode=passcode';
-        var escrow = server+'/escrow/create?erc20from='+sendAddress+'&erc20to='+receiveWallet+'&erc20Amount='+sendTokenUnit+'&erc721from='+receiveAddress+'&erc721to='+sendAddressWallet+'&erc721Id='+receiveTokenUnit+'&timelimit=10&passcode=passcode';
+        var escrow = server+'/escrow/create?erc20from='+sendAddress+'&erc20to='+sendAddressWallet+'&erc20Amount='+sendTokenUnit+'&erc721from='+receiveAddress+'&erc721to='+receiveWallet+'&erc721Id='+receiveTokenUnit+'&timelimit=10&passcode=passcode';
 
 
         console.log(escrow);
@@ -127,9 +127,10 @@ $(function() { //shorthand document.ready function
         // var swapApproveSender =server+'/escrow/erc20/approve?address='+&passcode='passcode'
         // var escrow = server+'/escrow/create?erc20from='+sendAddress+'&erc20to='+receiveWallet+'&erc20Amount='+sendTokenUnit+'&erc721from='+receiveAddress+'&erc721to='+sendAddressWallet+'&erc721Id='+receiveTokenUnit+'&timelimit=10&passcode=passcode';
         console.log("seller start to lesase fund ");
+        console.log(transfer);
         $.getJSON(transfer,
             function(text4){
-                if(text2){
+                if(text4){
                     // $('body').html(text.content);
                     console.log(text4);
                     // document.getElementById("escrow").insertAdjacentHTML("afterbegin", `<div class="alert alert-success" role="alert">contract address ${text2}</div>`);
