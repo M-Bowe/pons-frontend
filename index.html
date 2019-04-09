@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="icon" href="img/favicon.ico">
   <meta name="description" content="A bridge for Quorum used to exchange tokens">
+  <meta name="theme-color" content="#4D4D4D" />
 
   <title>Pons: Trading Bridge for Quorum</title>
 
@@ -93,11 +94,11 @@
       </div>
     </div>
     <div>
-      <p>The Pons Trading Bridge provides a solution for being able to exchange ERC20 and ERC721 tokens.
+      <p>The Pons Trading Bridge provides a solution for being able to exchange ERC-20 and ERC-721 tokens.
         It utilizes a bridge between two distinct blockchain tokens using the Quorum blockchain environment.
       </p>
 
-      <p> There will be two tokens on separate blockchains: an ERC20 "cash" token, and an ERC721 loan token. </p>
+      <p> There will be two tokens on separate blockchains: an ERC-20 "cash" token, and an ERC-721 loan token. </p>
 
       <p> In order for this conversion to take place,
         a "bridge" between these separate blockchain implementations is developed using these two distinct smart contract protocols.
@@ -114,8 +115,8 @@
 
       <div class="collapse" id="collapseExample" align="center">
         <div class="card card-body">
-          <p> Let's start with two of our developers (Colin & Mackenzie) who wish to exchange ERC20 and ERC721 tokens.<br>
-            Mackenzie's ERC721 token in this instance is his house that he wishes to sell.<br>
+          <p> Let's start with two of our developers (Colin & Mackenzie) who wish to exchange ERC-20 and ERC-721 tokens.<br>
+            Mackenzie's ERC-721 token in this instance is his house that he wishes to sell.<br>
             We will be using the other 2 developers (Sadaf & Nathan) to represent the escrow wallets.
           </p>
           <img src="img/slide1.PNG"  class="center" width="700px" height="400px">
@@ -165,9 +166,18 @@
       </div>
     </div>
     <div>
-      <div class="col-xl-8 col-lg-8 mx-auto">
+      <div class="col-xl-9 col-lg-9 mx-auto">
         <div class="text-center text-lg-left">
           <form class="form-inline d-flex" onsubmit="return getBalance();">
+            <div class="custom-control custom-radio custom-control-inline">
+              <input type="radio" id="is20Balance" name="customRadioInline1" class="custom-control-input" checked>
+              <label class="custom-control-label" for="is20Balance">ERC-20</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+              <input type="radio" id="is721Balance" name="customRadioInline1" class="custom-control-input">
+              <label class="custom-control-label" for="is721Balance">ERC-721</label>
+            </div>
+
             <input  id="inputBalance" type="text" class="form-control-lg flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" onsubmit="return getBalance();" pattern="^[a-zA-Z0-9]*$" placeholder="Enter wallet address&#8230;" required maxlength="42">
             <button type="button" onclick="return getBalance();" class="btn btn-primary mx-auto">Submit</button>
           </form>
@@ -190,26 +200,26 @@
       </div>
     </div>
 
-    <button type="button" id="erc20Form" class="btn btn-secondary mx-auto">Contract Transactions</button>
+    <button type="button" id="erc20Form" class="btn btn-secondary mx-auto">Generate Escrows</button>
     <button type="button" id="reviewForm" class="btn btn-secondary mx-auto">Review Transactions</button>
-    <button type="button" id="buyerTransferEscrow" class="btn btn-secondary mx-auto">Buyer send token</button>
-    <button type="button" id="sellerTransferEscrow" class="btn btn-secondary mx-auto">Seller send token</button>
+    <button type="button" id="buyerTransferEscrow" class="btn btn-secondary mx-auto">Release ERC-20 Token</button>
+    <button type="button" id="sellerTransferEscrow" class="btn btn-secondary mx-auto">Release ERC-721 Token</button>
 
-    <div>
-      <br>
-      <form id ="exchangeForm20" method="POST">
+    <form id ="exchangeForm20" method="POST">
+      <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+        Need Help?
+      </a>
 
-        <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-          Need Help?
-        </a>
-
-        <div class="collapse" id="collapseExample" align="center">
-          <div class="card card-body">
-            transfer stuff
-            <br></br>
-          </div>
+      <div class="collapse" id="collapseExample" align="center">
+        <div class="card card-body">
+          The transaction begins with the Buyer filling out the form and providing<br>
+          - Addresses of both parties<br>
+          - Addresses of their respective wallets<br>
+          - Amount that is being transferred<br>
+          Once completed, click submit to review the transaction.
         </div>
-
+      </div>
+      <br><br>
         <br>
         <br>
 
@@ -242,49 +252,44 @@
       </form>
     </div>
     <div>
-      <form id ="sellerReview" method="POST">
 
+    <form id ="sellerReview" method="POST">
         <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
           Need Help?
         </a>
 
         <div class="collapse" id="collapseExample" align="center">
           <div class="card card-body">
-            transfer stuff
-            <br></br>
+              The Seller will be able to review the trade proposed by the Buyer here.<br>
+              In this form, the Seller may submit their part of the transaction.
           </div>
         </div>
-
-        <br>
-        <br>
+        <br><br>
 
         <div class="form-group">
-          <label for="buyerERC20">Receiver Address</label>
-          <input class="form-control" id="buyerERC20" aria-describedby="emailHelp" placeholder="0xaabb">
+          <label for="escrowERC20">ERC 20 escrow Address</label>
+          <input class="form-control" id="escrowERC20" aria-describedby="emailHelp" placeholder="0xaabb">
         </div>
         <div class="form-group">
-          <label for="sellerERC721">Sender Address</label>
-          <input class="form-control" id="sellerERC721" placeholder="0xbbcc">
+          <label for="escrowERC721">ERC 721 escrow Address</label>
+          <input class="form-control" id="escrowERC721" placeholder="0xbbcc">
         </div>
         <button type="submit" class="btn btn-primary btn-block" id="review">Review</button>
       </form>
-    </div>
-    <div>
-      <form id ="buyerTransferFund" method="POST">
 
+    <form id ="buyerTransferFund" method="POST">
         <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
           Need Help?
         </a>
 
         <div class="collapse" id="collapseExample" align="center">
           <div class="card card-body">
-            transfer stuff
-            <br></br>
+              Both transactions are now held within Escrow wallets until both parties confirm to release the assets.<br><br>
+              This form is for the Buyer to release assets from the Escrow wallet to the Seller.<br>
+              The Buyer must fill out the address of the Escrow with the accompanied passphrase in order to release the funds.
           </div>
         </div>
-
-        <br>
-        <br>
+        <br><br>
 
         <div class="form-group">
           <label for="buyerTransferERC20">ERC-20 Escrow Address</label>
@@ -296,24 +301,20 @@
         </div>
         <button type="submit" class="btn btn-primary btn-block" id="submitBuyerFund" >release buyer fund</button>
       </form>
-    </div>
-    <div>
-      <form id ="sellerTransferFund" method="POST">
 
+    <form id ="sellerTransferFund" method="POST">
         <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
           Need Help?
         </a>
 
         <div class="collapse" id="collapseExample" align="center">
           <div class="card card-body">
-            transfer stuff
-            <br></br>
+            The Seller must also release their assets in order to complete the transaction.<br>
+            The Seller must fill out the address of the escrow with the accompanied passphrase in order to release the funds.
+            <br>
           </div>
         </div>
-
-        <br>
-        <br>
-
+        <br><br>
 
         <div class="form-group">
           <label for="sellerTransferERC721">ERC-721 Escrow Address</label>
@@ -325,8 +326,8 @@
         </div>
         <button type="submit" class="btn btn-primary btn-block" id="submitSellerFund" >release seller fund</button>
       </form>
-    </div>
-  </div><br>
+    <br>
+  </div>
 
   <div id="escrow" class="container">
     <div class="row align-items-center no-gutters mb-4 mb-lg-5">
@@ -344,7 +345,6 @@
       </div>
     </div>
   </div>
-
 </section>
 
 <!-- History Section -->
@@ -370,7 +370,6 @@
   </div>
 </section>
 
-
 <!-- Footer -->
 <footer class="bg-black small text-center text-white-50">
   <div class="container">
@@ -382,7 +381,6 @@
   </div>
 </footer>
 
-
 <!-- Bootstrap core scripts -->
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -392,10 +390,6 @@
 
 <!-- Custom scripts -->
 <script src="js/grayscale.min.js"></script>
-
-<!-- back end scripts -->
 <script src="js/formProcess.js"></script>
-
 </body>
-
 </html>
