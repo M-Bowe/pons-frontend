@@ -11,6 +11,7 @@ $(function() {
         // sendTokenUnit = 50;
 
         var getReview = server+'/escrow/viewEscrowParams?erc20EscrowAddress='+erc20Escrow+'&erc721EscrowAddress='+erc721Escrow;
+        console.log(getReview);
         $.getJSON(getReview,
             function(text){
                 if(text){
@@ -53,6 +54,7 @@ $(function() { //shorthand document.ready function
         var receiveWallet =  $("#receiverAddressWallet").val();
         var sendTokenUnit = $("#sendToken").val();
         var receiveTokenUnit = $("#receiveToken").val();
+        var passcode =  $("#passphase").val();
         // var receiveTokentUnit = $("#receiveToken20").val();
 
         // sendAddress = '685e0b659c3be1c465d5bb37c03e6263efcae25b';
@@ -62,7 +64,7 @@ $(function() { //shorthand document.ready function
         // var transfer = server+'/erc20/transfer?amount='+sendTokenUnit+'&address='+sendAddress;
         // var swapApproveSender =server+'/escrow/erc20/approve?address='+&passcode='passcode'
         // var escrow = server+'/escrow/create?erc20from='+sendAddress+'&erc20to='+receiveWallet+'&erc20Amount='+sendTokenUnit+'&erc721from='+receiveAddress+'&erc721to='+sendAddressWallet+'&erc721Id='+receiveTokenUnit+'&timelimit=10&passcode=passcode';
-        var escrow = server+'/escrow/create?erc20from='+sendAddress+'&erc20to='+sendAddressWallet+'&erc20Amount='+sendTokenUnit+'&erc721from='+receiveAddress+'&erc721to='+receiveWallet+'&erc721Id='+receiveTokenUnit+'&timelimit=10&passcode=passcode';
+        var escrow = server+'/escrow/create?erc20from='+sendAddress+'&erc20to='+sendAddressWallet+'&erc20Amount='+sendTokenUnit+'&erc721from='+receiveAddress+'&erc721to='+receiveWallet+'&erc721Id='+receiveTokenUnit+'&timelimit=10&passcode='+passcode;
 
         console.log(escrow);
         $.getJSON(escrow,
