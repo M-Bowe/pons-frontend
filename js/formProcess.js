@@ -1,12 +1,8 @@
-// Set server instance = 'x.ngrok.io';
-var server = 'http://4237612e.ngrok.io/';
 
+// Set server instance here as 'x.ngrok.io';
+var server = 'http://4237612e.ngrok.io';
 
-// http://f408c4e6.ngrok.io/escrow/viewEscrowParams?escrow20address=[]&escrow721address=
-
-
-
-$(function() { //shorthand document.ready function
+$(function() {
     $('#sellerReview').on('submit', function(e) { //use on if jQuery 1.7+
         e.preventDefault();  //prevent form from submitting
         $("#loadIcon").toggle();
@@ -31,16 +27,13 @@ $(function() { //shorthand document.ready function
                     var erc721Id = data.erc721Id;
                     // console.log("escoew 20 : "+escrow20);
                     // console.log("escoew 721 : "+escrow721);
-                    var transactionERC20 = "ERC 20 transfer from address: "+erc20from+"  to address :"+erc20to+ "  for amount: "+erc20Amount;
-                    var transactionERC721 = "ERC 721 transfer from address: "+erc721from+"  to address :"+erc721to+ "  for id: "+erc721Id;
+                    var transactionERC20 = "ERC-20 transfer from address: "+erc20from+"  to address:"+erc20to+ " for amount: "+erc20Amount;
+                    var transactionERC721 = "ERC-721 transfer from address: "+erc721from+"  to address:"+erc721to+ " for ERC-721 ID: "+erc721Id;
 
                     $("#loadIcon").toggle();
                     document.getElementById("escrow").innerHTML = "";
-                    //
-                    document.getElementById("escrow").insertAdjacentHTML("afterbegin", `<div class="alert alert-success" role="alert"> escrow erc 20 transaction info :  ${transactionERC20}</div>`);
-                    document.getElementById("escrow").insertAdjacentHTML("afterbegin", `<div class="alert alert-success" role="alert">escrow erc 721 transaction info :  ${transactionERC721}</div>`);
-
-
+                    document.getElementById("escrow").insertAdjacentHTML("afterbegin", `<div class="alert alert-success" role="alert">ERC-20 Escrow Transaction Info: ${transactionERC20}</div>`);
+                    document.getElementById("escrow").insertAdjacentHTML("afterbegin", `<div class="alert alert-success" role="alert">ERC-721 Escrow Transaction Info: ${transactionERC721}</div>`);
                 } else {
                     // $('body').html('Error');
                     console.log("error");
@@ -74,7 +67,6 @@ $(function() { //shorthand document.ready function
         // var escrow = server+'/escrow/create?erc20from='+sendAddress+'&erc20to='+receiveWallet+'&erc20Amount='+sendTokenUnit+'&erc721from='+receiveAddress+'&erc721to='+sendAddressWallet+'&erc721Id='+receiveTokenUnit+'&timelimit=10&passcode=passcode';
         var escrow = server+'/escrow/create?erc20from='+sendAddress+'&erc20to='+sendAddressWallet+'&erc20Amount='+sendTokenUnit+'&erc721from='+receiveAddress+'&erc721to='+receiveWallet+'&erc721Id='+receiveTokenUnit+'&timelimit=10&passcode='+passcode;
 
-
         console.log(escrow);
         $.getJSON(escrow,
             function(text2){
@@ -89,18 +81,14 @@ $(function() { //shorthand document.ready function
                     $("#loadIcon").toggle();
                     document.getElementById("escrow").innerHTML = "";
 
-                    document.getElementById("escrow").insertAdjacentHTML("afterbegin", `<div class="alert alert-success" role="alert">contract address escrow 20:  ${escrow20}</div>`);
-                    document.getElementById("escrow").insertAdjacentHTML("afterbegin", `<div class="alert alert-success" role="alert">contract address escroew 721: ${escrow721}</div>`);
-
-
+                    document.getElementById("escrow").insertAdjacentHTML("afterbegin", `<div class="alert alert-success" role="alert">ERC-20 Escrow Address:  ${escrow20}</div>`);
+                    document.getElementById("escrow").insertAdjacentHTML("afterbegin", `<div class="alert alert-success" role="alert">ERC-721 Escrow Address: ${escrow721}</div>`);
                 } else {
                     // $('body').html('Error');
                     console.log("error");
                 }
             }
         );
-
-
     });
 });
 
@@ -113,7 +101,7 @@ $(function() {
         // var swapApproveSender =server+'/escrow/erc20/approve?address='+&passcode='passcode'
         // var escrow = server+'/escrow/create?erc20from='+sendAddress+'&erc20to='+receiveWallet+'&erc20Amount='+sendTokenUnit+'&erc721from='+receiveAddress+'&erc721to='+sendAddressWallet+'&erc721Id='+receiveTokenUnit+'&timelimit=10&passcode=passcode';
 
-        console.log("buyer start to lesase fund ");
+        console.log("Buyer started to release funds");
         console.log(transfer);
         $.getJSON(transfer,
             function(text3){
@@ -121,16 +109,12 @@ $(function() {
                     // $('body').html(text.content);
                     console.log(text3);
                     // document.getElementById("escrow").insertAdjacentHTML("afterbegin", `<div class="alert alert-success" role="alert">contract address ${text2}</div>`);
-
-
                 } else {
                     // $('body').html('Error');
                     console.log("error");
                 }
             }
         );
-
-
     });
 });
 
@@ -144,7 +128,7 @@ $(function() {
         var transfer = server+'/escrow/erc721/approve?passcode='+passphrase+'&address='+seller;
         // var swapApproveSender =server+'/escrow/erc20/approve?address='+&passcode='passcode'
         // var escrow = server+'/escrow/create?erc20from='+sendAddress+'&erc20to='+receiveWallet+'&erc20Amount='+sendTokenUnit+'&erc721from='+receiveAddress+'&erc721to='+sendAddressWallet+'&erc721Id='+receiveTokenUnit+'&timelimit=10&passcode=passcode';
-        console.log("seller start to lesase fund ");
+        console.log("Seller started to release fund");
         console.log(transfer);
         $.getJSON(transfer,
             function(text4){
@@ -152,16 +136,12 @@ $(function() {
                     // $('body').html(text.content);
                     console.log(text4);
                     // document.getElementById("escrow").insertAdjacentHTML("afterbegin", `<div class="alert alert-success" role="alert">contract address ${text2}</div>`);
-
-
                 } else {
                     // $('body').html('Error');
                     console.log("error");
                 }
             }
         );
-
-
     });
 });
 
