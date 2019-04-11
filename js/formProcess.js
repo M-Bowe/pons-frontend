@@ -1,5 +1,5 @@
 // Set server instance = 'x.ngrok.io';
-var server = 'http://954f2f28.ngrok.io';
+var server = 'http://4237612e.ngrok.io/';
 
 
 // http://f408c4e6.ngrok.io/escrow/viewEscrowParams?escrow20address=[]&escrow721address=
