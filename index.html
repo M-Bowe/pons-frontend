@@ -4,9 +4,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="icon" href="img/favicon.ico">
   <meta name="description" content="A bridge for Quorum used to exchange tokens">
   <meta name="theme-color" content="#4D4D4D" />
+  <link rel="icon" href="img/favicon.png">
 
   <title>Pons: Trading Bridge for Quorum</title>
 
@@ -38,9 +38,6 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href="#about">About</a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link js-scroll-trigger" href="#guide">How It Works</a>
         </li>
         <li class="nav-item">
@@ -63,25 +60,10 @@
     <div class="mx-auto text-center">
       <h1 class="mx-auto my-0 text-uppercase">Pons</h1>
       <h2 class="text-white-50 mx-auto mt-2 mb-5"><br><br>A cryptocurrency exchange bridge for Quorum created by students at RIT.</h2>
-      <a href="#about" class="btn btn-primary js-scroll-trigger">Get Started</a>
+      <a href="#guide" class="btn btn-primary js-scroll-trigger">Get Started</a>
     </div>
   </div>
 </header>
-
-<!-- About Section -->
-<section id="about" class="about-section text-center">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 mx-auto">
-        <h2 class="text-white mb-4">Built for Quorum</h2>
-        <p> </p>
-        <p class="text-white-50">Pons is a senior project created by students at RIT.
-          <br>The project, created in partnership with J.P. Morgan, is centered around the exchange of ERC-20 and ERC-721 tokens on <a href="https://www.jpmorgan.com/global/Quorum">Quorum</a> blockchains.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- Guide Section -->
 <section id="guide" class="projects-section bg-white" style="height: auto;">
@@ -199,143 +181,161 @@
         <hr class="d-none d-lg-block mb-0 ml-0">
       </div>
     </div>
-
-    <button type="button" id="erc20Form" class="btn btn-secondary mx-auto">Generate Escrows</button>
-    <button type="button" id="reviewForm" class="btn btn-secondary mx-auto">Review Transactions</button>
-    <button type="button" id="buyerTransferEscrow" class="btn btn-secondary mx-auto">Release ERC-20 Token</button>
-    <button type="button" id="sellerTransferEscrow" class="btn btn-secondary mx-auto">Release ERC-721 Token</button>
-
-    <form id ="exchangeForm20" method="POST">
-      <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-        Need Help?
-      </a>
-
-      <div class="collapse" id="collapseExample" align="center">
-        <div class="card card-body">
-          The transaction begins with the Buyer filling out the form and providing<br>
-          - Addresses of both parties<br>
-          - Addresses of their respective wallets<br>
-          - Amount that is being transferred<br>
-          Once completed, click submit to review the transaction.
-        </div>
-      </div><br><br>
-
-      <div class="form-group">
-        <label for="receiverAddress">ERC 721 Sender Address</label>
-        <input class="form-control" id="receiverAddress" aria-describedby="emailHelp" placeholder="0xaabb">
-      </div>
-      <div class="form-group">
-        <label for="receiverAddressWallet">ERC 721 Receiver wallet</label>
-        <input class="form-control" id="receiverAddressWallet" aria-describedby="emailHelp" placeholder="0xaabb">
-      </div>
-      <div class="form-group" type="hidden">
-        <label for="receiveToken">ERC 721 ID to send</label>
-        <input class="form-control" id="receiveToken" placeholder="0xbbcc">
-      </div>
-      <div class="form-group">
-        <label for="senderAddress">ERC 20 Sender address</label>
-        <input class="form-control" id="senderAddress" placeholder="0xbbcc">
-      </div>
-      <div class="form-group">
-        <label for="senderAddressWallet">ERC 20 Receiver wallet</label>
-        <input class="form-control" id="senderAddressWallet" placeholder="0xbbcc">
-      </div>
-      <div class="form-group" type="hidden">
-        <label for="sendToken">ERC 20 unit to send</label>
-        <input class="form-control" id="sendToken" placeholder="0xbbcc">
-      </div>
-      <div class="form-group" type="hidden">
-        <label for="passphase">passphase </label>
-        <input class="form-control" id="passphase" placeholder="0xbbcc">
-      </div>
-      <button type="submit" class="btn btn-primary btn-block" id="submit">Submit</button>
-    </form>
-    
-    <form id ="sellerReview" method="POST">
-        <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-          Need Help?
-        </a>
-
-        <div class="collapse" id="collapseExample" align="center">
+    <ul class="nav nav-pills nav-fill" id="pills-tab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link btn btn-secondary" id="escrowsButton" data-toggle="pill" href="#escrows" role="tab" aria-controls="escrows" aria-selected="false">Generate Escrows</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link btn btn-secondary" id="reviewButton" data-toggle="pill" href="#review" role="tab" aria-controls="review" aria-selected="false">Review Transactions</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link btn btn-secondary" id="buyerButton" data-toggle="pill" href="#buyer" role="tab" aria-controls="buyer" aria-selected="false">Release ERC-20 Tokens</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link btn btn-secondary" id="sellerButton" data-toggle="pill" href="#seller" role="tab" aria-controls="seller" aria-selected="false">Release ERC-721 Tokens</a>
+      </li>
+    </ul>
+    <div class="tab-content" id="pills-tabContent">
+      <div class="tab-pane fade" id="escrows" role="tabpanel" aria-labelledby="escrowsButton">
+        <form id ="exchangeForm20" method="POST">
           <div class="card card-body">
-              The Seller will be able to review the trade proposed by the Buyer here.<br>
-              In this form, the Seller may submit their part of the transaction.
-          </div>
-        </div>
-        <br><br>
-
-        <div class="form-group">
-          <label for="escrowERC20">ERC 20 escrow Address</label>
-          <input class="form-control" id="escrowERC20" aria-describedby="emailHelp" placeholder="0xaabb">
-        </div>
-        <div class="form-group">
-          <label for="escrowERC721">ERC 721 escrow Address</label>
-          <input class="form-control" id="escrowERC721" placeholder="0xbbcc">
-        </div>
-        <button type="submit" class="btn btn-primary btn-block" id="review">Review</button>
-      </form>
-
-    <form id ="buyerTransferFund" method="POST">
-        <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-          Need Help?
-        </a>
-
-        <div class="collapse" id="collapseExample" align="center">
-          <div class="card card-body">
-              Both transactions are now held within Escrow wallets until both parties confirm to release the assets.<br><br>
-              This form is for the Buyer to release assets from the Escrow wallet to the Seller.<br>
-              The Buyer must fill out the address of the Escrow with the accompanied passphrase in order to release the funds.
-          </div>
-        </div>
-        <br><br>
-
-        <div class="form-group">
-          <label for="buyerTransferERC20">ERC-20 Escrow Address</label>
-          <input class="form-control" id="buyerTransferERC20" aria-describedby="emailHelp" placeholder="0xaabb">
-        </div>
-        <div class="form-group">
-          <label for="buyerPassphrase">Passphrase</label>
-          <input class="form-control" id="buyerPassphrase" placeholder="0xbbcc">
-        </div>
-        <button type="submit" class="btn btn-primary btn-block" id="submitBuyerFund" >release buyer fund</button>
-      </form>
-
-    <form id ="sellerTransferFund" method="POST">
-        <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-          Need Help?
-        </a>
-
-        <div class="collapse" id="collapseExample" align="center">
-          <div class="card card-body">
-            The Seller must also release their assets in order to complete the transaction.<br>
-            The Seller must fill out the address of the escrow with the accompanied passphrase in order to release the funds.
+            <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+              Need Help?
+            </a>
+            <div class="collapse" id="collapseExample" align="center">
+              <div class="card card-body">
+                The transaction begins with the Buyer filling out the form and providing<br>
+                - Addresses of both parties<br>
+                - Addresses of their respective wallets<br>
+                - Amount that is being transferred<br>
+                Once completed, click submit to review the transaction.
+              </div>
+            </div>
             <br>
-          </div>
-        </div>
-        <br><br>
 
-        <div class="form-group">
-          <label for="sellerTransferERC721">ERC-721 Escrow Address</label>
-          <input class="form-control" id="sellerTransferERC721" aria-describedby="emailHelp" placeholder="0xaabb">
-        </div>
-        <div class="form-group">
-          <label for="sellerPassphrase">Passphrase</label>
-          <input class="form-control" id="sellerPassphrase" placeholder="0xbbcc">
-        </div>
-        <button type="submit" class="btn btn-primary btn-block" id="submitSellerFund" >release seller fund</button>
-      </form>
-    <br>
+            <div class="form-group">
+              <label for="receiverAddress">ERC-721 Sender Address</label>
+              <input required class="form-control" id="receiverAddress" placeholder="Address (0x...)">
+            </div>
+            <div class="form-group">
+              <label for="receiverAddressWallet">ERC-721 Receiver Address</label>
+              <input required class="form-control" id="receiverAddressWallet" placeholder="Address (0x...)">
+            </div>
+            <div class="form-group">
+              <label for="receiveToken">ERC-721 ID to send</label>
+              <input required class="form-control" id="receiveToken" placeholder="Address (0x...)">
+            </div>
+            <hr class="d-none d-md-block mb-0 ml-0"><br>
+            <div class="form-group">
+              <label for="senderAddress">ERC-20 Sender Address</label>
+              <input required class="form-control" id="senderAddress" placeholder="Address (0x...)">
+            </div>
+            <div class="form-group">
+              <label for="senderAddressWallet">ERC-20 Receiver Address</label>
+              <input required class="form-control" id="senderAddressWallet" placeholder="Address (0x...)">
+            </div>
+            <div class="form-group">
+              <label for="sendToken">ERC-20 Amount</label>
+              <input required class="form-control" id="sendToken" placeholder="Desired amount in ERC-20">
+            </div>
+            <div class="form-group">
+              <label for="passphrase">Passphrase</label>
+              <input required class="form-control" id="passphrase" placeholder="Any unique string">
+            </div>
+            <button type="submit" class="btn btn-primary btn-block" id="submit">Submit</button>
+          </div>
+        </form>
+      </div>
+      <div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="reviewButton">
+        <form id ="sellerReview" method="POST">
+          <div class="card card-body">
+            <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+              Need Help?
+            </a>
+            <div class="collapse" id="collapseExample" align="center">
+              <div class="card card-body">
+                The Seller will be able to review the trade proposed by the Buyer here.<br>
+                In this form, the Seller may submit their part of the transaction.
+              </div>
+            </div>
+            <br>
+
+            <div class="form-group">
+              <label for="escrowERC20">ERC-20 Escrow Address</label>
+              <input required class="form-control" id="escrowERC20" placeholder="Address (0x...)">
+            </div>
+            <div class="form-group">
+              <label for="escrowERC721">ERC-721 Escrow Address</label>
+              <input required class="form-control" id="escrowERC721" placeholder="Address (0x...)">
+            </div>
+            <button type="submit" class="btn btn-primary btn-block" id="review">Review</button>
+          </div>
+        </form>
+      </div>
+      <div class="tab-pane fade" id="buyer" role="tabpanel" aria-labelledby="buyerButton">
+        <form id ="buyerTransferFund" method="POST">
+          <div class="card card-body">
+            <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+              Need Help?
+            </a>
+            <div class="collapse" id="collapseExample" align="center">
+              <div class="card card-body">
+                Both transactions are now held within Escrow wallets until both parties confirm to release the assets.<br><br>
+                This form is for the Buyer to release assets from the Escrow wallet to the Seller.<br>
+                The Buyer must fill out the address of the Escrow with the accompanied passphrase in order to release the funds.
+              </div>
+            </div>
+            <br>
+
+            <div class="form-group">
+              <label for="buyerTransferERC20">ERC-20 Escrow Address</label>
+              <input required class="form-control" id="buyerTransferERC20" placeholder="Address (0x...)">
+            </div>
+            <div class="form-group">
+              <label for="buyerPassphrase">Passphrase</label>
+              <input required class="form-control" id="buyerPassphrase" placeholder="Matching passphrase">
+            </div>
+            <button type="submit" class="btn btn-primary btn-block" id="submitBuyerFund">Release Buyer Tokens</button>
+          </div>
+        </form>
+      </div>
+      <div class="tab-pane fade" id="seller" role="tabpanel" aria-labelledby="sellerButton">
+        <form id ="sellerTransferFund" method="POST">
+          <div class="card card-body">
+            <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+              Need Help?
+            </a>
+            <div class="collapse" id="collapseExample" align="center">
+              <div class="card card-body">
+                The Seller must also release their assets in order to complete the transaction.<br>
+                The Seller must fill out the address of the Escrow with the accompanied passphrase in order to release the funds.
+              </div>
+            </div>
+            <br>
+
+            <div class="form-group">
+              <label for="sellerTransferERC721">ERC-721 Escrow Address</label>
+              <input required class="form-control" id="sellerTransferERC721" placeholder="Address (0x...)">
+            </div>
+            <div class="form-group">
+              <label for="sellerPassphrase">Passphrase</label>
+              <input required class="form-control" id="sellerPassphrase" placeholder="Matching passphrase">
+            </div>
+            <button type="submit" class="btn btn-primary btn-block" id="submitSellerFund">Release Seller Token</button>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
 
   <div id="escrow" class="container">
     <div class="row align-items-center no-gutters mb-4 mb-lg-5">
       <div class="col-xl-6 col-lg-6">
-        <!--<h4>Escrow Contracts</h4>-->
-        <hr class="d-none d-lg-block mb-0 ml-0">
+        <br>
       </div>
     </div>
   </div>
-  <div id ="loadIcon" class = "container">
+  <div id="loadIcon" class="container">
     <div class="row align-items-center no-gutters mb-4 mb-lg-5">
       <div class="col-xl-6 col-lg-6">
         <i class="fa fa-spinner fa-pulse fa-3x fa-fw margin-bottom"></i>
